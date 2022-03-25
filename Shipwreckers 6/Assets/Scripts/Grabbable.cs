@@ -11,7 +11,7 @@ public class Grabbable : MonoBehaviour
     //Classes, Enums & Structs:
 
     //Objects & Components:
-    private Rigidbody rb;               //Grabbable rigidbody component
+    internal Rigidbody rb;              //Grabbable rigidbody component
     internal Transform grabOrientation; //Transform used to orient object when grabbed (optional)
 
     //Settings:
