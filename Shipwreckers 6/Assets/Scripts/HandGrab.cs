@@ -19,9 +19,40 @@ public class HandGrab : MonoBehaviour
     [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
 
     //Runtime Memory Vars:
-
+    private Vector3 prevPosition;    //Position of this controller last frame
+    private Vector3 currentVelocity; //Current velocity of this controller
 
     //RUNTIME METHODS:
+    private void Start()
+    {
+        //Initialize variables:
+        prevPosition = transform.position; //Store current position
+    }
+    private void Update()
+    {
+        //Update current velocity:
+        currentVelocity = (transform.position - prevPosition) / Time.deltaTime; //Update velocity tracker
+        prevPosition = transform.position;                                      //Update previous position
+    }
+    private void FixedUpdate()
+    {
+        //Update held object orientation:
+        if (heldObject != null) //Player is currently holding an object
+        {
+            if (heldObject.forceGrabPosition && heldObject.transform.localPosition != -heldObject.grabOrientation.localPosition) //Object needs to be lerped into position
+            {
+                //Lerp object toward hand orientation:
+                Vector3 targetPosition = transform.position + (heldObject.transform.position - heldObject.grabOrientation.position); //Get target transform position
+                Vector3 newPosition = Vector3.Lerp(heldObject.transform.position, targetPosition, grabSnapStrength);                 //Get new position by lerping with snap strength
+                if (Vector3.Distance(targetPosition, newPosition) < 0.01) newPosition = targetPosition;                              //Just snap to target if close enoug
+                heldObject.transform.position = newPosition;                                                                         //Apply new position to object
+            }
+            if (heldObject.forceGrabRotation && heldObject.transform.rotation != transform.rotation) //Object neewds to be lerped into rotation
+            {
+                //WORK IN PROGRESS
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         //Try to get hovered object:
@@ -66,7 +97,7 @@ public class HandGrab : MonoBehaviour
         }
         if (heldObject.forceGrabRotation && grabSnapStrength == 1) //Case where object instantly snaps into hand rotation
         {
-            //NOT FINISHED
+            //WORK IN PROGRESS
         }
     }
     private void Release()
@@ -76,6 +107,7 @@ public class HandGrab : MonoBehaviour
         //Cleanup:
         heldObject.transform.parent = transform.root; //Unchild held object
         heldObject.IsReleased();                      //Indicate that object has been released
+        heldObject.rb.velocity = currentVelocity;     //Send current velocity
         heldObject = null;                            //Indicate object is no longer being held
     }
 }
