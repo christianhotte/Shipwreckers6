@@ -13,10 +13,12 @@ public class Grabbable : MonoBehaviour
     //Objects & Components:
     internal Rigidbody rb;              //Grabbable rigidbody component
     internal Transform grabOrientation; //Transform used to orient object when grabbed (optional)
+    internal HandGrab currentHand;      //Hand currently holding this object
 
     //Settings:
     [Tooltip("Causes object to snap to specific position when grabbed")] public bool forceGrabPosition;
     [Tooltip("Causes object to snap to specific rotation when grabbed")] public bool forceGrabRotation;
+    [Tooltip("Whether or not object may currently be grabbed")]          public bool isGrabbable = true;
 
     //Runtime Memory Vars:
 
@@ -36,17 +38,19 @@ public class Grabbable : MonoBehaviour
 
     //PUBLIC METHODS:
     /// <summary>
-    /// Call when this object is grabbed by player.
+    /// Called when this object is grabbed by player.
     /// </summary>
-    public void IsGrabbed()
+    public virtual void IsGrabbed(HandGrab controller)
     {
-        rb.isKinematic = true; //Make object kinematic (to negate gravity)
+        rb.isKinematic = true;    //Make object kinematic (to negate gravity)
+        currentHand = controller; //Store hand grabbing this object
     }
     /// <summary>
-    /// Call when this object is released by player.
+    /// Called when this object is released by player.
     /// </summary>
-    public void IsReleased()
+    public virtual void IsReleased(HandGrab controller)
     {
         rb.isKinematic = false; //Re-enable dynamic object movement
+        currentHand = null;     //Remove reference to hand controller
     }
 }
