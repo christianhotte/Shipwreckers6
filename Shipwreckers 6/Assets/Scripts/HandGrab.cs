@@ -58,6 +58,7 @@ public class HandGrab : MonoBehaviour
         //Try to get hovered object:
         if (heldObject != null || hoverObject != null) return;            //Ignore this if player is already holding or hovering over an object
         if (!other.TryGetComponent(out Grabbable grabController)) return; //Ignore this if object is not grabbable
+        if (!grabController.isGrabbable) return;                          //Ignore if object is not grabbable
         hoverObject = grabController;                                     //Set this object as current object being hovered over
     }
     private void OnTriggerExit(Collider other)
@@ -85,9 +86,12 @@ public class HandGrab : MonoBehaviour
     {
         //Function: Grabs target grabbable
 
+        //Validity checks:
+        if (!hoverObject.isGrabbable) return; //Do not grab an ungrabbable object
+
         //Initialization:
-        heldObject = hoverObject; //Grab currently-hovered object
-        heldObject.IsGrabbed();   //Indicate to object that it has been grabbed
+        heldObject = hoverObject;   //Grab currently-hovered object
+        heldObject.IsGrabbed(this); //Indicate to object that it has been grabbed
 
         //Move object:
         heldObject.transform.parent = transform;                   //Child object to hand
@@ -100,13 +104,19 @@ public class HandGrab : MonoBehaviour
             //WORK IN PROGRESS
         }
     }
-    private void Release()
+    /// <summary>
+    /// Releases currently-held object from hand.
+    /// </summary>
+    public void Release()
     {
         //Function: Releases currently-held grabbable
 
+        //Validity checks:
+        if (heldObject == null) return; //Make sure hand is holding an object
+
         //Cleanup:
         heldObject.transform.parent = transform.root; //Unchild held object
-        heldObject.IsReleased();                      //Indicate that object has been released
+        heldObject.IsReleased(this);                  //Indicate that object has been released
         heldObject.rb.velocity = currentVelocity;     //Send current velocity
         heldObject = null;                            //Indicate object is no longer being held
     }
