@@ -12,6 +12,7 @@ public class Grabbable : MonoBehaviour
 
     //Objects & Components:
     internal Rigidbody rb;              //Grabbable rigidbody component
+    internal Collider coll;             //Grabbable collider component
     internal Transform grabOrientation; //Transform used to orient object when grabbed (optional)
     internal HandGrab currentHand;      //Hand currently holding this object
 
@@ -27,8 +28,8 @@ public class Grabbable : MonoBehaviour
     private void Awake()
     {
         //Get objects & components:
-        if (!TryGetComponent(out rb)) { Debug.LogError(name + " needs a rigidbody to be grabbable"); Destroy(this); }               //Make sure object has a rigidbody
-        if (!TryGetComponent(out Collider collider)) { Debug.LogError(name + " needs a collider to be grabbable"); Destroy(this); } //Make sure object has a collider
+        if (!TryGetComponent(out rb)) { Debug.LogError(name + " needs a rigidbody to be grabbable"); Destroy(this); }  //Make sure object has a rigidbody
+        if (!TryGetComponent(out coll)) { Debug.LogError(name + " needs a collider to be grabbable"); Destroy(this); } //Make sure object has a collider
         if (forceGrabPosition || forceGrabRotation) //Object needs an orientation transform
         {
             grabOrientation = transform.Find("grabOrientation"); //Get orientation transform
