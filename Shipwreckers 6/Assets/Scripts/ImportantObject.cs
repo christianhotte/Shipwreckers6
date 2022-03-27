@@ -14,6 +14,7 @@ public class ImportantObject : MonoBehaviour
     private Vector3 startPos;
     private Rigidbody rb;
     private Grabbable grabscript;
+    public static bool NoImportantObjects = false;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class ImportantObject : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (NoImportantObjects) return;
         if (Vector3.Distance(startPos, transform.position) > maxDistFromStart)
         {
             BackToStart();

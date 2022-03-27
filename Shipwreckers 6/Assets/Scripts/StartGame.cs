@@ -10,7 +10,7 @@ public class StartGame : SipNode
     private List<GameObject> toDisable;
     [SerializeField]
     private List<GameObject> toEnable;
-    private bool gameStarted;
+    private static bool gameStarted;
     public override void TakeSip()
     {
         if (gameStarted) return;
@@ -28,5 +28,6 @@ public class StartGame : SipNode
             i.SetActive(true);
         }
         gameStarted = true;
+        ImportantObject.NoImportantObjects = true;
     }
 }
