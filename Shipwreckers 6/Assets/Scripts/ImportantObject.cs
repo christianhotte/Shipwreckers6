@@ -32,6 +32,11 @@ public class ImportantObject : MonoBehaviour
         rb.velocity = Vector3.zero;
         transform.position = startPos;
     }
+    private bool IsBeingGrabbed()
+    {
+        if (grabscript == null) return false;
+        return grabscript.beingGrabbed;
+    }
 
     private void FixedUpdate()
     {
@@ -39,7 +44,7 @@ public class ImportantObject : MonoBehaviour
         {
             BackToStart();
         }
-        else if (Vector3.Distance(startPos, transform.position) > minTimoutDistFromStart && !grabscript.beingGrabbed)
+        else if (Vector3.Distance(startPos, transform.position) > minTimoutDistFromStart && !IsBeingGrabbed())
         {
             if (currentTimeoutFrames > 0) currentTimeoutFrames -= 1;
             else BackToStart();
