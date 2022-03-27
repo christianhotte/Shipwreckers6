@@ -18,6 +18,6 @@ public class CannonLoader : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out CannonBall ammoController)) cannonController.Load(ammoController); //Load object into cannon if it is a cannonball
+        if (other.TryGetComponent(out CannonAmmo ammoController)) cannonController.Load(ammoController); //Load object into cannon if it is a cannonball
     }
 }
