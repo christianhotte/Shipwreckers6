@@ -1109,6 +1109,10 @@ PrefabInstance:
       propertyPath: forceGrabRotation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5577942875063046471, guid: ebac36dbf883bf949b8f471dcac000aa, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebac36dbf883bf949b8f471dcac000aa, type: 3}
 --- !u!1 &913643696
@@ -2089,6 +2093,34 @@ PrefabInstance:
     - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: infiniteAmmo
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelResetTime
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelReciproDist
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelReciproCurve.m_Curve.Array.data[1].time
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelReciproCurve.m_Curve.Array.data[0].inSlope
+      value: -5.882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelReciproCurve.m_Curve.Array.data[1].inSlope
+      value: -5.882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelReciproCurve.m_Curve.Array.data[0].outSlope
+      value: -5.882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033048360328072301, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: barrelReciproCurve.m_Curve.Array.data[1].outSlope
+      value: 1.2048193
       objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038101, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_Name

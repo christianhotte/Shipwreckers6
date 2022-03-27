@@ -17,7 +17,7 @@ public class HandGrab : MonoBehaviour
 
     //Settings:
     [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
-    [SerializeField] [Tooltip("Determines how many previous positions to remember for averaging throw velocity")]                  private int posMemoryLength;
+    [SerializeField] [Tooltip("Determines how many previous velocities to remember for averaging throw velocity")]                  private int velMemoryLength;
 
     //Runtime Memory Vars:
     private List<Vector3> velocityMem = new List<Vector3>();   //List of raw velocity vectors from last few physics updates (in order from latest to oldest)
@@ -40,10 +40,17 @@ public class HandGrab : MonoBehaviour
         Vector3 currentVelocity = (transform.position - prevPosition) / Time.fixedDeltaTime; //Get velocity this physics update
         prevPosition = transform.position;                                                   //Update prevPosition once used
         velocityMem.Insert(0, currentVelocity);                                              //Insert latest velocity at beginning of memory list
-        if (velocityMem.Count > posMemoryLength) velocityMem.RemoveAt(posMemoryLength - 1);  //Remove oldest item in memory if list is overfull
+        if (velocityMem.Count > velMemoryLength) velocityMem.RemoveAt(velMemoryLength - 1);  //Remove oldest item in memory if list is overfull
 
         //Update current angular velocity:
-        //Vector3 currentAngVel = 
+        Quaternion deltaRot = transform.rotation * Quaternion.Inverse(prevRotation);            //Get quaternion representing rotation made last update
+        Vector3 eulerRot = new Vector3( Mathf.DeltaAngle( 0, deltaRot.eulerAngles.x ),          //Get angle difference for X axis
+                                        Mathf.DeltaAngle( 0, deltaRot.eulerAngles.y ),          //Get angle difference for Y axis
+                                        Mathf.DeltaAngle( 0, deltaRot.eulerAngles.z ));         //Get angle difference for Z axis
+        Vector3 currentAngVel = (eulerRot / Time.fixedDeltaTime) * Mathf.Deg2Rad;               //Get angles from degrees per fixedupdate to radians per second
+        prevRotation = transform.rotation;                                                      //Update previous rotation once used
+        angularVelMem.Insert(0, currentAngVel);                                                 //Insert latest angular velocity at beginning of memory list
+        if (angularVelMem.Count > velMemoryLength) angularVelMem.RemoveAt(velMemoryLength - 1); //Remove oldest item in memory if list is overfull
 
         //Update held object orientation:
         if (heldObject != null) //Player is currently holding an object
@@ -59,10 +66,10 @@ public class HandGrab : MonoBehaviour
             if (heldObject.forceGrabRotation && heldObject.transform.rotation != transform.rotation) //Object neewds to be lerped into rotation
             {
                 //Lerp object toward desired rotation:
-                Quaternion targetRotation = heldObject.grabOrientation.localRotation;                                           //Get target local rotation
-                Quaternion newRotation = Quaternion.Slerp(heldObject.transform.localRotation, targetRotation, posMemoryLength); //Get new rotation by lerping with snap strength
-                if (Quaternion.Angle(targetRotation, newRotation) < 0.01) newRotation = targetRotation;                         //Just snap to target if close enough
-                heldObject.transform.localRotation = newRotation;                                                               //Apply new rotation to object
+                Quaternion targetRotation = heldObject.grabOrientation.localRotation;                                            //Get target local rotation
+                Quaternion newRotation = Quaternion.Slerp(heldObject.transform.localRotation, targetRotation, grabSnapStrength); //Get new rotation by lerping with snap strength
+                if (Quaternion.Angle(targetRotation, newRotation) < 0.01) newRotation = targetRotation;                          //Just snap to target if close enough
+                heldObject.transform.localRotation = newRotation;                                                                //Apply new rotation to object
             }
         }
     }
@@ -128,17 +135,18 @@ public class HandGrab : MonoBehaviour
         if (heldObject == null) return; //Make sure hand is holding an object
 
         //Cleanup:
-        heldObject.transform.parent = transform.root;  //Unchild held object
-        heldObject.IsReleased(this);                   //Indicate that object has been released
-        heldObject.rb.velocity = GetCurrentVelocity(); //Send current velocity (average throughout velocity memory)
-        heldObject = null;                             //Indicate object is no longer being held
+        heldObject.transform.parent = transform.root;              //Unchild held object
+        heldObject.IsReleased(this);                               //Indicate that object has been released
+        heldObject.rb.velocity = SmoothedCurrentVelocity();        //Send current velocity (smoothed)
+        heldObject.rb.angularVelocity = SmoothedAngularVelocity(); //Send current angular velocity (smoothed)
+        heldObject = null;                                         //Indicate object is no longer being held
     }
 
     //UTILITY METHODS:
     /// <summary>
     /// Returns average of all stored velocities in recent memory (smoothed velocity).
     /// </summary>
-    private Vector3 GetCurrentVelocity()
+    private Vector3 SmoothedCurrentVelocity()
     {
         Vector3 totalVelocity = Vector3.zero;                      //Initialize container for storing sum of velocity memory list
         foreach (Vector3 vel in velocityMem) totalVelocity += vel; //Add each velocity in memory to total velocity vector
@@ -147,8 +155,10 @@ public class HandGrab : MonoBehaviour
     /// <summary>
     /// Returns average of all stored angular velocities in recent memory (smoothed angular velocity).
     /// </summary>
-    /*private Vector3 GetCurrentAngularVelocity()
+    private Vector3 SmoothedAngularVelocity()
     {
-
-    }*/
+        Vector3 totalAngVel = Vector3.zero;                        //Initialize container for storing sum of angular velocity memory list
+        foreach (Vector3 vel in angularVelMem) totalAngVel += vel; //Add each angular velocity in memory (should already be in radians) to total velocity vector
+        return totalAngVel / angularVelMem.Count;                  //Return average angular velocity between all angular velocities in memory
+    }
 }
