@@ -15,6 +15,7 @@ public class Grabbable : MonoBehaviour
     internal Collider coll;             //Grabbable collider component
     internal Transform grabOrientation; //Transform used to orient object when grabbed (optional)
     internal HandGrab currentHand;      //Hand currently holding this object
+    internal bool beingGrabbed = false;
 
     //Settings:
     [Tooltip("Causes object to snap to specific position when grabbed")] public bool forceGrabPosition;
@@ -45,6 +46,7 @@ public class Grabbable : MonoBehaviour
     {
         rb.isKinematic = true;    //Make object kinematic (to negate gravity)
         currentHand = controller; //Store hand grabbing this object
+        beingGrabbed = true;
     }
     /// <summary>
     /// Called when this object is released by player.
@@ -53,5 +55,6 @@ public class Grabbable : MonoBehaviour
     {
         rb.isKinematic = false; //Re-enable dynamic object movement
         currentHand = null;     //Remove reference to hand controller
+        beingGrabbed = false;
     }
 }
