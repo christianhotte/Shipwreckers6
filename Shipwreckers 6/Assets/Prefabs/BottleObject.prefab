@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4856996402080567055}
   - component: {fileID: 3045598996287983589}
-  - component: {fileID: 2383570446059568876}
+  - component: {fileID: 1455968624125251529}
   - component: {fileID: 7267029395887114742}
   m_Layer: 0
   m_Name: SipNode
@@ -128,7 +128,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2383570446059568876
+--- !u!114 &1455968624125251529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,10 +137,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2538590828580568324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af0870c0ae98c644a7c29167c1f1d51, type: 3}
+  m_Script: {fileID: 11500000, guid: d426e9ab3c9102b4598729d44f3b87e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refPoint: {fileID: 6377793978063761557}
+  refPoint: {fileID: 0}
+  toAnimate: []
+  toDisable: []
+  toEnable: []
 --- !u!82 &7267029395887114742
 AudioSource:
   m_ObjectHideFlags: 0
