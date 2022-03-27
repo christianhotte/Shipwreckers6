@@ -19,10 +19,15 @@ public class HandGrab : MonoBehaviour
     [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
 
     //Runtime Memory Vars:
+    private Vector3[] prevVelocities;
     private Vector3 prevPosition;    //Position of this controller last frame
     private Vector3 currentVelocity; //Current velocity of this controller
 
     //RUNTIME METHODS:
+    private void Awake()
+    {
+        prevVelocities = new Vector3[10];
+    }
     private void Start()
     {
         //Initialize variables:
@@ -36,6 +41,13 @@ public class HandGrab : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //Update array of previous velocities
+        for (int i = prevVelocities.Length-1; i  > 0; i--)
+        {
+            prevVelocities[i - 1] = prevVelocities[i]; //Push all vel values back
+        }
+        //record new vel value
+        prevVelocities[prevVelocities.Length - 1] = currentVelocity;
         //Update held object orientation:
         if (heldObject != null) //Player is currently holding an object
         {
@@ -117,7 +129,15 @@ public class HandGrab : MonoBehaviour
         //Cleanup:
         heldObject.transform.parent = transform.root; //Unchild held object
         heldObject.IsReleased(this);                  //Indicate that object has been released
-        heldObject.rb.velocity = currentVelocity;     //Send current velocity
+        //heldObject.rb.velocity = currentVelocity;     //Send current velocity
+        Vector3 throwVelocity = Vector3.zero;
+        for (int i = prevVelocities.Length - 1; i >= 0; i--)
+        {
+            if (Vector3.Angle(currentVelocity, prevVelocities[i]) < 60.0f)
+                throwVelocity += prevVelocities[i];
+        }
+        throwVelocity = new Vector3(throwVelocity.x * 1.6f, throwVelocity.y * 0.8f, throwVelocity.z * 1.6f);
+        heldObject.rb.velocity = (throwVelocity/prevVelocities.Length);
         heldObject = null;                            //Indicate object is no longer being held
     }
 }
