@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabSnapStrength: 0.3
+  velMemoryLength: 5
 --- !u!135 &1907726829
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] [Tooltip("Sound made when cannon is fired without ammo")] private AudioClip dryFireSound;
 
     //Runtime Memory Vars:
-    private CannonBall loadedAmmo;    //Object currently loaded into cannon (if any)
+    private CannonAmmo loadedAmmo;    //Object currently loaded into cannon (if any)
     private float timeUntilReady = 0; //Time (in seconds) before cannon is ready to fire again
     private Vector3 barrelOrigPos;    //Original local position of barrel
     private Vector3 barrelReciproPos; //Local barrel position when fully reciprocated (only needs to be computed once)
@@ -77,7 +77,7 @@ public class Cannon : MonoBehaviour
     /// Loads ammo object into cannon.
     /// </summary>
     /// <param name="ammo">Controller for object being loaded into cannon.</param>
-    public void Load(CannonBall ammo)
+    public void Load(CannonAmmo ammo)
     {
         //Validity checks:
         if (loadedAmmo != null) return; //Only allow one cannonball to be loaded at a time
@@ -88,8 +88,9 @@ public class Cannon : MonoBehaviour
         loadedAmmo = ammo; //Store reference to loaded cannonball
 
         //Place ammo in loaded position:
-        loadedAmmo.transform.parent = transform;           //Set cannon as parent of cannonBall
-        loadedAmmo.transform.position = loadZone.position; //Move cannonball to designated loaded position
+        loadedAmmo.transform.parent = transform;                       //Set cannon as parent of cannonBall
+        loadedAmmo.transform.position = loadZone.position;             //Move cannonball to designated loaded position
+        loadedAmmo.transform.localEulerAngles = new Vector3(90, 0, 0); //Align object with barrel (assuming objects are tallest along the Y axis)
 
         //Effects:
         audioSource.PlayOneShot(loadSound); //Play load sound
