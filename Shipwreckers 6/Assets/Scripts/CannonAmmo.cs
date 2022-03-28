@@ -14,6 +14,7 @@ public class CannonAmmo : MonoBehaviour
 
     //Runtime Memory Vars:
     private bool activeProjectile; //Enables cannonball to do damage as projectile
+    internal bool isLoaded;        //Whether or not this object is currently loaded in cannon
 
     //RUNTIME METHODS:
     private void Start()
@@ -55,6 +56,7 @@ public class CannonAmmo : MonoBehaviour
             if (grabbable.currentHand != null) grabbable.currentHand.Release(); //Force hand to release cannonball (if applicable)
             grabbable.isGrabbable = false;                                      //Ensure cannonball can no longer be grabbed
         }
+        isLoaded = true;       //Indicate object is loaded
         rb.isKinematic = true; //Ensure cannonball is not affected by physics
     }
     /// <summary>
@@ -64,6 +66,7 @@ public class CannonAmmo : MonoBehaviour
     {
         //Free cannonball:
         rb.isKinematic = false;  //Make cannonball affected by physics again
+        isLoaded = false;        //Indicate that object is no longer loaded
         activeProjectile = true; //Turn on projectile mode so that cannonball can do damage
     }
 }

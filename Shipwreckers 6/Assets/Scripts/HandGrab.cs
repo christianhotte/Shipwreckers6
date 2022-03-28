@@ -129,6 +129,9 @@ public class HandGrab : MonoBehaviour
         {
             heldObject.transform.localRotation = heldObject.grabOrientation.localRotation; //Just match target rotation as set by grabOrientation transform
         }
+
+        //Cleanup:
+        anim.SetBool("Hovering", false); //Make sure hand doesn't think it's hovering
     }
     /// <summary>
     /// Releases currently-held object from hand.
