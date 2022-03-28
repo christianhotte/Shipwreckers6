@@ -17,7 +17,7 @@ public class HandGrab : MonoBehaviour
 
     //Settings:
     [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
-    [SerializeField] [Tooltip("Determines how many previous velocities to remember for averaging throw velocity")]                  private int velMemoryLength;
+    [SerializeField] [Tooltip("Determines how many previous velocities to remember for averaging throw velocity")]                 private int velMemoryLength;
 
     //Runtime Memory Vars:
     private List<Vector3> velocityMem = new List<Vector3>();   //List of raw velocity vectors from last few physics updates (in order from latest to oldest)
@@ -40,17 +40,17 @@ public class HandGrab : MonoBehaviour
         Vector3 currentVelocity = (transform.position - prevPosition) / Time.fixedDeltaTime; //Get velocity this physics update
         prevPosition = transform.position;                                                   //Update prevPosition once used
         velocityMem.Insert(0, currentVelocity);                                              //Insert latest velocity at beginning of memory list
-        if (velocityMem.Count > velMemoryLength) velocityMem.RemoveAt(velMemoryLength - 1);  //Remove oldest item in memory if list is overfull
+        if (velocityMem.Count > velMemoryLength) velocityMem.RemoveAt(velMemoryLength);      //Remove oldest item in memory if list is overfull
 
         //Update current angular velocity:
-        Quaternion deltaRot = transform.rotation * Quaternion.Inverse(prevRotation);            //Get quaternion representing rotation made last update
-        Vector3 eulerRot = new Vector3( Mathf.DeltaAngle( 0, deltaRot.eulerAngles.x ),          //Get angle difference for X axis
-                                        Mathf.DeltaAngle( 0, deltaRot.eulerAngles.y ),          //Get angle difference for Y axis
-                                        Mathf.DeltaAngle( 0, deltaRot.eulerAngles.z ));         //Get angle difference for Z axis
-        Vector3 currentAngVel = (eulerRot / Time.fixedDeltaTime) * Mathf.Deg2Rad;               //Get angles from degrees per fixedupdate to radians per second
-        prevRotation = transform.rotation;                                                      //Update previous rotation once used
-        angularVelMem.Insert(0, currentAngVel);                                                 //Insert latest angular velocity at beginning of memory list
-        if (angularVelMem.Count > velMemoryLength) angularVelMem.RemoveAt(velMemoryLength - 1); //Remove oldest item in memory if list is overfull
+        Quaternion deltaRot = transform.rotation * Quaternion.Inverse(prevRotation);        //Get quaternion representing rotation made last update
+        Vector3 eulerRot = new Vector3( Mathf.DeltaAngle( 0, deltaRot.eulerAngles.x ),      //Get angle difference for X axis
+                                        Mathf.DeltaAngle( 0, deltaRot.eulerAngles.y ),      //Get angle difference for Y axis
+                                        Mathf.DeltaAngle( 0, deltaRot.eulerAngles.z ));     //Get angle difference for Z axis
+        Vector3 currentAngVel = (eulerRot / Time.fixedDeltaTime) * Mathf.Deg2Rad;           //Get angles from degrees per fixedupdate to radians per second
+        prevRotation = transform.rotation;                                                  //Update previous rotation once used
+        angularVelMem.Insert(0, currentAngVel);                                             //Insert latest angular velocity at beginning of memory list
+        if (angularVelMem.Count > velMemoryLength) angularVelMem.RemoveAt(velMemoryLength); //Remove oldest item in memory if list is overfull
 
         //Update held object orientation:
         if (heldObject != null) //Player is currently holding an object

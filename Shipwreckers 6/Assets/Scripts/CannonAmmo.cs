@@ -32,9 +32,9 @@ public class CannonAmmo : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (activeProjectile) //Cannonball hits something while in projectile mode
+        if (activeProjectile) //Stuff that happens when projectile collides with something while active
         {
-            print("Cannonball hit object: " + collision.gameObject.name);
+            print("Projectile" + gameObject.name + " hit object: " + collision.gameObject.name);
         }
     }
 
