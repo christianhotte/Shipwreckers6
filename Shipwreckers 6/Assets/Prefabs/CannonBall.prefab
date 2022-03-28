@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6972297581346049058}
-  - component: {fileID: 6972297581346049059}
   - component: {fileID: 6972297581346049057}
   - component: {fileID: 6972297581346049061}
   - component: {fileID: 6972297581346049060}
   - component: {fileID: 6972297581346049063}
   - component: {fileID: 6972297581346049056}
+  - component: {fileID: -2790561750324074295}
   m_Layer: 0
   m_Name: CannonBall
   m_TagString: Untagged
@@ -37,21 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6972297581346049059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6972297581346049062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c6a792463e85149a95be91883f1159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceGrabPosition: 1
-  forceGrabRotation: 0
-  isGrabbable: 1
 --- !u!114 &6972297581346049057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +128,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2790561750324074295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6972297581346049062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d996d22cb0ab8346ab939dd36d87ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceGrabPosition: 1
+  forceGrabRotation: 0
+  isGrabbable: 1
 --- !u!1 &6972297581757817285
 GameObject:
   m_ObjectHideFlags: 0
