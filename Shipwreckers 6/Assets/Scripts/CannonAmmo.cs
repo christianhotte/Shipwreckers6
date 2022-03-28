@@ -35,6 +35,11 @@ public class CannonAmmo : MonoBehaviour
         if (activeProjectile) //Stuff that happens when projectile collides with something while active
         {
             print("Projectile" + gameObject.name + " hit object: " + collision.gameObject.name);
+            IShootable shot = collision.gameObject.GetComponent<IShootable>();
+            if (shot != null)
+            {
+                shot.Shoot(ammoProfile);
+            }
         }
     }
 
