@@ -12,6 +12,7 @@ public class HandGrab : MonoBehaviour
     //Classes, Enums & Structs:
 
     //Objects & Components:
+    private Transform grabAnchor;  //Transform where grabbed objects stick to
     private Grabbable hoverObject; //Grabbable object hand is currently able to grab (if any)
     private Grabbable heldObject;  //Grabbable object currently being held by hand (if any)
     private Animator anim;         //Animator on child hand model
@@ -30,6 +31,7 @@ public class HandGrab : MonoBehaviour
     private void Start()
     {
         //Get objects & components:
+        grabAnchor = transform.Find("grabAnchor"); if (grabAnchor == null) { Debug.LogError("Hand controller needs child named grabAnchor"); Destroy(this); }
         if (!transform.GetChild(0).TryGetComponent(out anim)) { Debug.LogError("Hand Controller needs animator in first child object"); Destroy(this); }
 
         //Initialize variables:
@@ -62,10 +64,10 @@ public class HandGrab : MonoBehaviour
             if (heldObject.forceGrabPosition && heldObject.transform.localPosition != -heldObject.grabOrientation.localPosition) //Object needs to be lerped into position
             {
                 //Lerp object toward desired position:
-                Vector3 targetPosition = transform.position + (heldObject.transform.position - heldObject.grabOrientation.position); //Get target transform position
-                Vector3 newPosition = Vector3.Lerp(heldObject.transform.position, targetPosition, grabSnapStrength);                 //Get new position by lerping with snap strength
-                if (Vector3.Distance(targetPosition, newPosition) < 0.01) newPosition = targetPosition;                              //Just snap to target if close enough
-                heldObject.transform.position = newPosition;                                                                         //Apply new position to object
+                Vector3 targetPosition = grabAnchor.position + (heldObject.transform.position - heldObject.grabOrientation.position); //Get target transform position
+                Vector3 newPosition = Vector3.Lerp(heldObject.transform.position, targetPosition, grabSnapStrength);                  //Get new position by lerping with snap strength
+                if (Vector3.Distance(targetPosition, newPosition) < 0.01) newPosition = targetPosition;                               //Just snap to target if close enough
+                heldObject.transform.position = newPosition;                                                                          //Apply new position to object
             }
             if (heldObject.forceGrabRotation && heldObject.transform.rotation != transform.rotation) //Object neewds to be lerped into rotation
             {
@@ -123,7 +125,7 @@ public class HandGrab : MonoBehaviour
         heldObject.transform.parent = transform; //Make object child of the hand
         if (heldObject.forceGrabPosition && grabSnapStrength == 1) //Case where object instantly snaps into hand position
         {
-            heldObject.transform.position = transform.position + (heldObject.transform.position - heldObject.grabOrientation.position);
+            heldObject.transform.position = grabAnchor.position + (heldObject.transform.position - heldObject.grabOrientation.position);
         }
         if (heldObject.forceGrabRotation && grabSnapStrength == 1) //Case where object instantly snaps into hand rotation
         {
