@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AmmoConfig_CannonBall
   m_EditorClassIdentifier: 
   rawDamage: 10
-  spinEffect: 5
+  isLarge: 0

@@ -134,6 +134,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   barrelResetTime: 0.55
+  singleShotResetTime: 1
   barrelReciproDist: 0.23
   barrelReciproCurve:
     serializedVersion: 2

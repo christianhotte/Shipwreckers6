@@ -26,7 +26,7 @@ public class Grabbable : MonoBehaviour
 
 
     //RUNTIME METHODS:
-    private void Awake()
+    public virtual void Awake()
     {
         //Get objects & components:
         if (!TryGetComponent(out rb)) { Debug.LogError(name + " needs a rigidbody to be grabbable"); Destroy(this); }  //Make sure object has a rigidbody

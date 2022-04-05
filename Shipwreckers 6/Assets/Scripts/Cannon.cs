@@ -42,6 +42,7 @@ public class Cannon : MonoBehaviour
 
     //Runtime Memory Vars:
     private List<CannonAmmo> loadedAmmo = new List<CannonAmmo>(); //Object currently loaded into cannon (if any)
+    private bool full = false;                                    //Whether or not cannon is currently full (and cannot accept any more ammo)
 
     private float timeUntilReady = 0; //Time (in seconds) before cannon is ready to fire again
     private Vector3 barrelOrigPos;    //Original local position of barrel
@@ -90,7 +91,11 @@ public class Cannon : MonoBehaviour
     }
     public void OnFireInput(InputAction.CallbackContext context)
     {
-        if (context.performed) Fire(); //Fire cannon when fire input is performed
+        if (context.performed) Fire(false); //Fire cannon when fire input is performed
+    }
+    public void OnSingleFireInput(InputAction.CallbackContext context)
+    {
+        if (context.performed) Fire(true); //Fire just a single item from cannon
     }
 
     //FUNCTIONALITY METHODS:
@@ -101,8 +106,9 @@ public class Cannon : MonoBehaviour
     public void Load(CannonAmmo ammo)
     {
         //Validity checks:
-        if (loadedAmmo.Count >= maxAmmo) return; //Only allow ammo to be loaded if cannon has room
-        if (timeUntilReady > 0) return;          //Do not allow cannon to be loaded while in post-firing sequence
+        if (full) return;                                             //Only allow ammo to be loaded if cannon has room
+        if (timeUntilReady > 0) return;                               //Do not allow cannon to be loaded while in post-firing sequence
+        if (ammo.ammoProfile.isLarge && loadedAmmo.Count > 0) return; //Do not allow large ammo to be loaded into cannon with other ammo
 
         //Handshake:
         ammo.IsLoaded();      //Indicate to cannonball that it has been loaded (causes hand to release ammunition)
@@ -119,15 +125,20 @@ public class Cannon : MonoBehaviour
         ammo.transform.position = loadZone.position;             //Move cannonball to designated loaded position
         ammo.transform.localEulerAngles = new Vector3(90, 0, 0); //Align object with barrel (assuming objects are tallest along the Y axis)
 
+        //Check if full:
+        if (ammo.ammoProfile.isLarge) full = true;    //Indicate that cannon is full if loaded ammo is large
+        if (loadedAmmo.Count >= maxAmmo) full = true; //Indicate that cannon is full if ammo capacity has been reached
+
         //Effects:
         audioSource.PlayOneShot(loadSound); //Play load sound
     }
     /// <summary>
     /// Fires all currently-loaded ammo out of cannon.
     /// </summary>
-    private void Fire()
+    private void Fire(bool singleShot)
     {
         //Validity checks:
+        if (timeUntilReady > 0) return; //Cannon is not ready yet
         if (loadedAmmo.Count == 0) //Dry-firing
         {
             audioSource.PlayOneShot(dryFireSound); //Play dry-fire sound
@@ -141,8 +152,9 @@ public class Cannon : MonoBehaviour
         for (int i = 0; i < loadedAmmo.Count; i++) //Iterate through each individual ammo item in cannon
         {
             //Initialize:
-            CannonAmmo currentAmmo = loadedAmmo[i];    //Get reference to current ammo item
-            Vector3 shotDirection = transform.forward; //Direction to fire projectile (defaults to straight ahead but may be modified if using multishot)
+            if (singleShot) { i = loadedAmmo.Count - 1; } //Only fire last projectile in stack if using singleshot mode
+            CannonAmmo currentAmmo = loadedAmmo[i];       //Get reference to current ammo item
+            Vector3 shotDirection = transform.forward;    //Direction to fire projectile (defaults to straight ahead but may be modified if using multishot)
 
             //Prep projectile:
             foreach (CannonAmmo otherAmmo in loadedAmmo) //Iterate through each loaded piece of ammunition in cannon
@@ -156,7 +168,7 @@ public class Cannon : MonoBehaviour
 
             //Position projectile:
             Vector3 newPosition = basePos; //Initialize container for new position (assume default base position)
-            if (loadedAmmo.Count > 1) //Positioning for multishot projectiles
+            if (loadedAmmo.Count > 1 && !singleShot) //Positioning for multishot projectiles
             {
                 //Circularly offset projectiles in multishot:
                 float currentOffsetRot = (i * offsetRot) + (offsetRot / loadedAmmo.Count);                  //Get value for offset rotation (which determines characteristics of shot pattern)
@@ -178,9 +190,21 @@ public class Cannon : MonoBehaviour
         }
 
         //Cleanup:
-        loadedAmmo.Clear();                 //Clear loaded ammo list
         audioSource.PlayOneShot(fireSound); //Play firing sound
         timeUntilReady = barrelResetTime;   //Begin post-firing sequence
+        full = false;                       //Indicate that cannon is no longer full
+        if (singleShot) //Cleanup for singleshots
+        {
+            loadedAmmo.RemoveAt(loadedAmmo.Count - 1); //Just remove ammo at end of array
+            if (loadedAmmo.Count > 0)                  //There is still some ammo in the cannon
+            {
+                loadedAmmo[loadedAmmo.Count - 1].GetComponentInChildren<MeshRenderer>().enabled = true; //Allow next piece of ammo in cannon to be seen
+            }
+        }
+        else //Cleanup for multishots
+        {
+            loadedAmmo.Clear(); //Clear loaded ammo
+        }
     }
 
     //UTILITY METHODS:

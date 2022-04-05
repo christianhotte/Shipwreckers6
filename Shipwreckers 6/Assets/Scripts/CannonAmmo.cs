@@ -10,7 +10,7 @@ public class CannonAmmo : MonoBehaviour
     private Grabbable grabbable; //Component which optionally makes this ammo grabbable
 
     //Settings:
-    [SerializeField] [Tooltip("Configuration determining ammo properties once fired")] private CannonAmmoConfig ammoProfile;
+    [Tooltip("Configuration determining ammo properties once fired")] public CannonAmmoConfig ammoProfile;
 
     //Runtime Memory Vars:
     private bool activeProjectile; //Enables cannonball to do damage as projectile

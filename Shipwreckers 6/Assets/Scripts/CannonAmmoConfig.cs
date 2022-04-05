@@ -9,5 +9,6 @@ using UnityEngine;
 public class CannonAmmoConfig : ScriptableObject
 {
     [Header("Gameplay Settings:")]
-    [Tooltip("How much damage this projectile deals upon a direct hit")] public int rawDamage;
+    [Tooltip("How much damage this projectile deals upon a direct hit")]               public int rawDamage;
+    [Tooltip("If true, this object cannot be fit into cannon with other projectiles")] public bool isLarge;
 }
