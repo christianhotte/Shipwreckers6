@@ -133,8 +133,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  maxChargeTime: 2
+  maxShotForceMult: 3
+  minMultiSpreadMult: 0.5
   barrelResetTime: 0.55
-  singleShotResetTime: 1
   barrelReciproDist: 0.23
   barrelReciproCurve:
     serializedVersion: 2

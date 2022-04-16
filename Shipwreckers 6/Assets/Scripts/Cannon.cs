@@ -29,6 +29,11 @@ public class Cannon : MonoBehaviour
     [SerializeField] [Tooltip("Spread of multishot projectiles (value = degrees) depending on number (t) of fired projectiles, used to make multishots less accurate")] private AnimationCurve multishotSpreadAngle;
     [SerializeField] [Tooltip("Power multiplier (value) depending on number (t) of fired projectiles, used to make multishots weaker")]                                 private AnimationCurve multishotPowerFalloff;
 
+    [Header("Charge Shot Settings:")]
+    [SerializeField] [Tooltip("The longest amount of time player can hold down trigger when charging cannon")] private float maxChargeTime;
+    [SerializeField] [Tooltip("Maximum multiplier applied to shotforce when cannon is charged")]               private float maxShotForceMult;
+    [SerializeField] [Tooltip("Minimum multiplier applied to multishot spread when charging cannon")]          private float minMultiSpreadMult;
+
     [Header("Visuals & Sequence:")]
     [SerializeField] [Tooltip("Time taken after firing before cannon is ready to fire again")] private float barrelResetTime;
     [SerializeField] [Tooltip("How far back barrel reciprocates when firing")]                 private float barrelReciproDist;
@@ -50,6 +55,8 @@ public class Cannon : MonoBehaviour
 
     private List<Vector3> velocityMem = new List<Vector3>(); //List of raw velocity vectors from last few physics updates (in order from latest to oldest)
     private Vector3 prevPosition;                            //Last position hand object was in, used to compute momentary velocity
+
+    private float triggerHoldTime = -1; //Time player has been holding down the trigger (negative means trigger is not held)
 
     //RUNTIME METHODS:
     private void Awake()
@@ -80,6 +87,9 @@ public class Cannon : MonoBehaviour
             float reciprocationAmount = barrelReciproCurve.Evaluate(1 - timeUntilReady);               //Get interpolant value for how much to reciprocate barrel based on time remaining
             barrel.localPosition = Vector3.Lerp(barrelReciproPos, barrelOrigPos, reciprocationAmount); //Set new barrel position depending on reciprocation amount
         }
+
+        //Update timers:
+        if (triggerHoldTime >= 0) triggerHoldTime += Time.deltaTime; //Increment trigger hold time if player is holding down the trigger
     }
     private void FixedUpdate()
     {
@@ -91,11 +101,23 @@ public class Cannon : MonoBehaviour
     }
     public void OnFireInput(InputAction.CallbackContext context)
     {
-        if (context.performed) Fire(false); //Fire cannon when fire input is performed
+        if (context.performed) //Trigger is pressed down
+        {
+            triggerHoldTime = 0; //Begin incrementation of triggerHoldTime
+        }
+        else if (context.canceled) //Trigger is released
+        {
+            float t = Mathf.Min(triggerHoldTime, maxChargeTime) / maxChargeTime; //Generate interpolant value based on how long trigger has been held down
+            float actualShotForce = Mathf.Lerp(1, maxShotForceMult, t);          //Determine shot force multiplier based on charge amount
+            float spreadMultiplier = Mathf.Lerp(1, minMultiSpreadMult, t);       //Determine shot angle reducer based on charge amount
+            Fire(actualShotForce, spreadMultiplier, false);                      //Fire cannon
+            triggerHoldTime = -1;                                                //Indicate that trigger is no longer pressed
+        }
+            
     }
     public void OnSingleFireInput(InputAction.CallbackContext context)
     {
-        if (context.performed) Fire(true); //Fire just a single item from cannon
+        if (context.performed) Fire(true); //Perform shot immediately (no modified parameters)
     }
 
     //FUNCTIONALITY METHODS:
@@ -133,9 +155,10 @@ public class Cannon : MonoBehaviour
         audioSource.PlayOneShot(loadSound); //Play load sound
     }
     /// <summary>
-    /// Fires all currently-loaded ammo out of cannon.
+    /// Fires all currently-loaded ammo out of cannon, applying given multipliers to shot properties.
     /// </summary>
-    private void Fire(bool singleShot)
+    //NOTE: MAKE OVERLOADS
+    private void Fire(float forceMultiplier, float spreadMultiplier, bool singleShot)
     {
         //Validity checks:
         if (timeUntilReady > 0) return; //Cannon is not ready yet
@@ -146,9 +169,9 @@ public class Cannon : MonoBehaviour
         }
 
         //Discharge all ammo items:
-        Vector3 basePos = muzzle.localPosition;                                            //Get shorthand for base initial position of fired projectiles (default is muzzle)
-        float offsetRot = 360 / loadedAmmo.Count;                                          //Get angle to rotate each ammo item around cannon center (in multishot scenario)
-        float currentForce = shotForce * multishotPowerFalloff.Evaluate(loadedAmmo.Count); //Get actual shotforce by comparing number of fired projectiles to force falloff curve
+        Vector3 basePos = muzzle.localPosition;                                                              //Get shorthand for base initial position of fired projectiles (default is muzzle)
+        float offsetRot = 360 / loadedAmmo.Count;                                                            //Get angle to rotate each ammo item around cannon center (in multishot scenario)
+        float currentForce = shotForce * forceMultiplier * multishotPowerFalloff.Evaluate(loadedAmmo.Count); //Get actual shotforce by comparing number of fired projectiles to force falloff curve
         for (int i = 0; i < loadedAmmo.Count; i++) //Iterate through each individual ammo item in cannon
         {
             //Initialize:
@@ -176,10 +199,10 @@ public class Cannon : MonoBehaviour
                 newPosition = Quaternion.Euler(0, 0, currentOffsetRot) * (newPosition - basePos) + basePos; //Get offset position rotated around center of barrel (arranges multishot projectiles in circular pattern)
 
                 //Modify shotDirection to add spread:
-                float spreadAngle = multishotSpreadAngle.Evaluate(loadedAmmo.Count);          //Get spread angle by evaluating fired projectile quantity
-                shotDirection = Quaternion.Euler(spreadAngle, 0, 0) * Vector3.forward;        //Apply rotation according to designated spread angle
-                shotDirection = Quaternion.Euler(0, 0, Random.Range(0, 360)) * shotDirection; //Apply random radial rotation (NEEDS REVISION, FEELS BAD)
-                shotDirection = transform.localToWorldMatrix.MultiplyVector(shotDirection);   //Re-orient shot direction in world space
+                float spreadAngle = spreadMultiplier * multishotSpreadAngle.Evaluate(loadedAmmo.Count); //Get spread angle by evaluating fired projectile quantity
+                shotDirection = Quaternion.Euler(spreadAngle, 0, 0) * Vector3.forward;                  //Apply rotation according to designated spread angle
+                shotDirection = Quaternion.Euler(0, 0, Random.Range(0, 360)) * shotDirection;           //Apply random radial rotation (NEEDS REVISION, FEELS BAD)
+                shotDirection = transform.localToWorldMatrix.MultiplyVector(shotDirection);             //Re-orient shot direction in world space
             }
             loadedAmmo[i].transform.localPosition = newPosition; //Set new position for ammo
 
@@ -205,6 +228,14 @@ public class Cannon : MonoBehaviour
         {
             loadedAmmo.Clear(); //Clear loaded ammo
         }
+    }
+    /// <summary>
+    /// Fires all currently-loaded ammo out of cannon.
+    /// </summary>
+    /// <param name="singleShot"></param>
+    private void Fire(bool singleShot)
+    {
+        Fire(1, 1, singleShot); //Call main method with default parameters
     }
 
     //UTILITY METHODS:
