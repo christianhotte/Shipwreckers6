@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1937862265}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.72211206, b: 0.8180093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -558,6 +558,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1807e24e30b90c946a3de6234611ed93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionTable:
+  - set: []
+    sequenceName: Zero
+  - set: []
+    sequenceName: One
+  - set: []
+    sequenceName: Two
+  health: 10
 --- !u!1001 &416744576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1832,6 +1840,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 50df4491ea61cda469729ba63a314c2a, type: 3}
       propertyPath: m_Name
       value: ShipBoss_Demo1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 50df4491ea61cda469729ba63a314c2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50df4491ea61cda469729ba63a314c2a, type: 3}
