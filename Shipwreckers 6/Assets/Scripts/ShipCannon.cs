@@ -18,14 +18,15 @@ public class ShipCannon : MonoBehaviour
     [SerializeField] [Tooltip("Velocity at which cannon shoots projectiles")] private float shootSpeed;
 
     //Runtime vars:
-    private float fireWaitTime; //Time (in seconds) before cannon fires
-    private Vector3 scheduledTarget; //Target (in world space) cannon is about to fire at
+    private float fireWaitTime;        //Time (in seconds) before cannon fires
+    private Transform scheduledTarget; //Target (in world space) cannon is about to fire at
 
     //RUNTIME METHODS:
     private void Awake()
     {
         //Initialize:
         allCannons.Add(this); //Add this cannon to cannon list upon creation
+        if (projectile.GetComponent<ShipCannonProjectile>() == null) Debug.LogError("Cannon projectile is missing ShipCannonProjectile script");
 
         //Get objects & components:
         barrelEnd = transform.Find("BarrelEnd"); //Get barrel end transform
@@ -62,18 +63,22 @@ public class ShipCannon : MonoBehaviour
     /// Triggers cannon firing sequence.
     /// </summary>
     /// <param name="waitTime">Time for cannon to wait before firing.</param>
-    public void FireAtTarget(Vector3 target, float waitTime)
+    public void FireAtTarget(Transform target, float waitTime)
     {
-        if (waitTime > 0)
+        //Delayed fire protocol:
+        if (waitTime > 0) //Cannon is being scheduled to fire
         {
             fireWaitTime = waitTime;  //Schedule shot
             scheduledTarget = target; //Indicate future target to fire at
-            return;
+            return;                   //Don't shoot yet
         }
 
         //Generate projectile:
         GameObject newProjectile = Instantiate(projectile, barrelEnd.position, barrelEnd.transform.rotation); //Generate a new cannonball
-        newProjectile.GetComponent<Rigidbody>().velocity = (target - barrelEnd.position).normalized * shootSpeed; //Set projectile velocity to fire at player
+        newProjectile.GetComponent<Rigidbody>().velocity = barrelEnd.forward * shootSpeed;                    //Set projectile velocity to fire at player
+
+        //Setup projectile:
+        newProjectile.GetComponent<ShipCannonProjectile>().target = target; //Indicate to projectile where its target is
 
         //Effects:
         audioSource.PlayOneShot(shootSound); //Play cannon firing sound
@@ -98,7 +103,7 @@ public class ShipCannon : MonoBehaviour
         float interval = sequenceTime / firingCannons.Count; //Find interval (in seconds) between each cannon firing
         for (int i = 0; i < firingCannons.Count; i++) //Iterate through each cannon in firing list
         {
-            firingCannons[i].FireAtTarget(target.position, interval * i); //Fire each cannon at set interval
+            firingCannons[i].FireAtTarget(target, interval * i); //Fire each cannon at set interval
         }
     }
     /// <summary>
