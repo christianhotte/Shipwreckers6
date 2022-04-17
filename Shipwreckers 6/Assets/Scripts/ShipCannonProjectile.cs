@@ -7,6 +7,7 @@ public class ShipCannonProjectile : MonoBehaviour
     //Objects & Components:
     /// <summary>Position shot cannonball will home toward.</summary>
     internal Transform target;
+    private Rigidbody rb;
 
     //Settings:
     [Header("Homing Settings:")]
@@ -14,14 +15,18 @@ public class ShipCannonProjectile : MonoBehaviour
     [SerializeField] [Tooltip("Distance to target at which projectile will stop homing in")] private float homingEndDist;
 
     //RUNTIME METHODS:
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     private void FixedUpdate()
     {
         //Projectile homing:
         if (Vector3.Distance(target.position, transform.position) > homingEndDist) //Projectile is far enough away to keep homing in
         {
-            Vector3 currentVel = GetComponent<Rigidbody>().velocity;                                                               //Get projectile's current velocity
-            Vector3 targetVel = (target.position - transform.position).normalized * currentVel.magnitude;                          //Get velocity which would point projectile directly at target
-            GetComponent<Rigidbody>().velocity = Vector3.MoveTowards(currentVel, targetVel, homingStrength * Time.fixedDeltaTime); //Modify velocity to make projectile point more toward target
-        }
+            Vector3 currentVel = rb.velocity;                                                               //Get projectile's current velocity
+            Vector3 targetVel = (target.position - transform.position).normalized * currentVel.magnitude;   //Get velocity which would point projectile directly at target
+            rb.velocity = Vector3.MoveTowards(currentVel, targetVel, homingStrength * Time.fixedDeltaTime); //Modify velocity to make projectile point more toward target
+        } else if (!rb.useGravity) rb.useGravity = true;
     }
 }
