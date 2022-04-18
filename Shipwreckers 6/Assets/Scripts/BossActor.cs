@@ -42,8 +42,12 @@ public class BossActor : MonoBehaviour, IShootable
     private PolarMover pmove;
     private Animator anim;
     [SerializeField]
+    private ShipActionSet[] actionTable;
+    private ShipActionSet[] randomActionTable;
+    /*
     private BossActionSequence[] actionTable;
     private BossActionSequence[] randomActionTable;
+    */
     private int currentSequence = 0;
     private int currentActionInSequence = 0;
 
@@ -71,13 +75,13 @@ public class BossActor : MonoBehaviour, IShootable
             currentSequence = 0;
             while (currentSequence < randomActionTable.Length)
             {
-                Debug.Log(randomActionTable[currentSequence].sequenceName);
+                Debug.Log(randomActionTable[currentSequence].bas.sequenceName);
                 currentActionInSequence = 0;
-                while (currentActionInSequence < randomActionTable[currentSequence].set.Length)
+                while (currentActionInSequence < randomActionTable[currentSequence].bas.set.Length)
                 {
-                    StartCoroutine(WaitThenMove(randomActionTable[currentSequence].set[currentActionInSequence]));
-                    StartCoroutine(WaitThenAnimate(randomActionTable[currentSequence].set[currentActionInSequence]));
-                    yield return new WaitForSeconds(randomActionTable[currentSequence].set[currentActionInSequence].next_action_wait_time);
+                    StartCoroutine(WaitThenMove(randomActionTable[currentSequence].bas.set[currentActionInSequence]));
+                    StartCoroutine(WaitThenAnimate(randomActionTable[currentSequence].bas.set[currentActionInSequence]));
+                    yield return new WaitForSeconds(randomActionTable[currentSequence].bas.set[currentActionInSequence].next_action_wait_time);
                     currentActionInSequence++;
                 }
                 currentSequence++;
