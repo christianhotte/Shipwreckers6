@@ -838,6 +838,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 00a4dc9f-1ee6-4349-b0e9-72d5dccaadd6
     m_ActionName: XRI RightHand Locomotion/Move
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5033048360328072301}
+        m_TargetAssemblyTypeName: Cannon, Assembly-CSharp
+        m_MethodName: OnSingleFireInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ccbf26b4-91de-404c-940e-1ca5547622a7
+    m_ActionName: XRI RightHand Interaction/SingleShot
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: XRI Head
