@@ -32,4 +32,15 @@ public class ShipCannonProjectile : MonoBehaviour
         }
         else if (!rb.useGravity) rb.useGravity = true; //Enable gravity once projectile is close enough to target
     }
+    private void OnTriggerEnter(Collider collider)
+    {
+        //Validity checks:
+        if (collider.GetComponent<ShipCannonProjectile>() != null) return; //Ignore if projectile hit another projectile from same broadside
+
+        //Projectile strike procedure:
+        if (collider.CompareTag("Player")) PlayerHealthManager.HurtPlayer(1); //Hurt player if hit
+
+        //Cleanup:
+        Destroy(gameObject); //Destroy gameobject after it hits a thing
+    }
 }

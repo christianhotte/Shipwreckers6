@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - LoadVolume
+  - Ocean
+  - Land
   layers:
   - Default
   - TransparentFX
