@@ -570,7 +570,39 @@ MonoBehaviour:
       animation_wait_time: 0.5
       movement_wait_time: 1
       next_action_wait_time: 3
+    - animName: 
+      rotation_min: -1
+      rotation_max: -1
+      approach_min: 0
+      approach_max: 0
+      does_teleport: 0
+      move_absolute: 0
+      animation_wait_time: 0.5
+      movement_wait_time: 1
+      next_action_wait_time: 3
     sequenceName: Shift
+  - set:
+    - animName: 
+      rotation_min: 0
+      rotation_max: 0
+      approach_min: 10
+      approach_max: 10
+      does_teleport: 0
+      move_absolute: 0
+      animation_wait_time: 0.5
+      movement_wait_time: 1
+      next_action_wait_time: 3
+    - animName: 
+      rotation_min: 0
+      rotation_max: 0
+      approach_min: -10
+      approach_max: -10
+      does_teleport: 0
+      move_absolute: 0
+      animation_wait_time: 0.5
+      movement_wait_time: 1
+      next_action_wait_time: 3
+    sequenceName: BackForth
   health: 10
 --- !u!1001 &416744576
 PrefabInstance:
