@@ -8,11 +8,7 @@ public class CannonDebugTarget : MonoBehaviour
     {
         for (;;)
         {
-            foreach (ShipCannon cannon in ShipCannon.allCannons)
-            {
-                cannon.FireAtTarget(transform);
-                print("Cannonfired");
-            }
+            ShipCannon.FireAllCannonsAtTarget(transform, 90, 0.7f);
             yield return new WaitForSeconds(3f);
         }
     }
