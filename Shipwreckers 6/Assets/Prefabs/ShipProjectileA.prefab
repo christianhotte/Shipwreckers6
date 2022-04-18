@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fd04f05123d364b976b927407f62fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homingStrength: 5
-  homingEndDist: 15
+  homingStrength: 7.5
+  homingEndDist: 17
 --- !u!1 &6972297581757817285
 GameObject:
   m_ObjectHideFlags: 0
