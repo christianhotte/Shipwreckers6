@@ -22,7 +22,7 @@ public struct BossAction
     public float animation_wait_time;
     // Time waited before movement is made
     public float movement_wait_time;
-    // Time waited before another action is taken
+    // Time waited before another action is taken (basically how long does this action take in total)
     public float next_action_wait_time;
 }
 
@@ -66,14 +66,40 @@ public class BossActor : MonoBehaviour, IShootable
         while (health > 0)
         {
             ShuffleActionTable();
-            currentActionInSequence = 0;
-            while (currentActionInSequence < randomActionTable.Length)
+            currentSequence = 0;
+            while (currentSequence < randomActionTable.Length)
             {
-                Debug.Log(randomActionTable[currentActionInSequence].sequenceName);
-                currentActionInSequence++;
-                yield return new WaitForSeconds(1.0f);
+                Debug.Log(randomActionTable[currentSequence].sequenceName);
+                currentActionInSequence = 0;
+                while (currentActionInSequence < randomActionTable[currentSequence].set.Length)
+                {
+                    StartCoroutine(WaitThenMove(randomActionTable[currentSequence].set[currentActionInSequence]));
+                    StartCoroutine(WaitThenAnimate(randomActionTable[currentSequence].set[currentActionInSequence]));
+                    yield return new WaitForSeconds(randomActionTable[currentSequence].set[currentActionInSequence].next_action_wait_time);
+                    currentActionInSequence++;
+                }
+                currentSequence++;
             }
             Debug.Log("--------------");
+        }
+    }
+    IEnumerator WaitThenMove(BossAction action)
+    {
+        yield return new WaitForSeconds(action.movement_wait_time);
+        float finalAngle = Random.Range(action.rotation_min, action.rotation_max);
+        float finalApproach = Random.Range(action.approach_min, action.approach_max);
+        if (action.move_absolute)
+            pmove.PolarWaypointSetAbsolute(finalAngle, finalApproach);
+        else
+            pmove.PolarWaypointSetRelative(finalAngle, finalApproach);
+        if (action.does_teleport) pmove.SnapToWaypoint();
+    }
+    IEnumerator WaitThenAnimate(BossAction action)
+    {
+        yield return new WaitForSeconds(action.animation_wait_time);
+        if (anim != null)
+        {
+            anim.Play(action.animName);
         }
     }
 

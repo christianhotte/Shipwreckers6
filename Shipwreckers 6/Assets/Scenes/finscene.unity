@@ -545,7 +545,7 @@ MonoBehaviour:
   approach_speed: 1
   move_to_waypoint: 1
   waypoint_angle: 0.5
-  waypoint_radius: 20
+  waypoint_radius: 40
 --- !u!114 &387837753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,12 +559,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionTable:
-  - set: []
-    sequenceName: Zero
-  - set: []
-    sequenceName: One
-  - set: []
-    sequenceName: Two
+  - set:
+    - animName: 
+      rotation_min: 1
+      rotation_max: 1
+      approach_min: 0
+      approach_max: 0
+      does_teleport: 0
+      move_absolute: 0
+      animation_wait_time: 0.5
+      movement_wait_time: 1
+      next_action_wait_time: 3
+    sequenceName: Shift
   health: 10
 --- !u!1001 &416744576
 PrefabInstance:
