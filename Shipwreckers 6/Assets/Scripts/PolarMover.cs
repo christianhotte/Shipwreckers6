@@ -60,4 +60,9 @@ public class PolarMover : MonoBehaviour
         waypoint_angle += _angle;
         waypoint_radius += _radius;
     }
+    public void SnapToWaypoint()
+    {
+        angle = waypoint_angle;
+        radius = waypoint_radius;
+    }
 }
