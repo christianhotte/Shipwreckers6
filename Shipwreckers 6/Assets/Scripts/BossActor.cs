@@ -37,6 +37,8 @@ public struct BossActionSequence
 
 public class BossActor : MonoBehaviour, IShootable
 {
+    [SerializeField]
+    private Transform playerHead;
     private PolarMover pmove;
     private Animator anim;
     [SerializeField]
@@ -101,6 +103,11 @@ public class BossActor : MonoBehaviour, IShootable
         {
             anim.Play(action.animName);
         }
+    }
+
+    public void FireCannon()
+    {
+        ShipCannon.FireAllCannonsAtTarget(playerHead, 25.0f, 0.1f);
     }
 
     public void Shoot(CannonAmmoConfig cac)
