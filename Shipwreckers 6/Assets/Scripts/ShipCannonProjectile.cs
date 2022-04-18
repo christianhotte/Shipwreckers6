@@ -14,6 +14,7 @@ public class ShipCannonProjectile : MonoBehaviour
     [SerializeField] [Tooltip("How many degrees per second projectile is able to home in by")] private float homingStrength;
     [SerializeField] [Tooltip("Distance to target at which projectile will stop homing in")] private float homingEndDist;
 
+
     //RUNTIME METHODS:
     private void Awake()
     {
