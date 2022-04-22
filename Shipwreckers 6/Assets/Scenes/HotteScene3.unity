@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1795189718270684689, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9c68b735ca1bcc46816089d78f114f8, type: 2}
+    - target: {fileID: 1795189718270684689, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea304f40400f0bf4faf08c63b42bec42, type: 2}
     - target: {fileID: 7173569148789038101, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_Name
       value: Player
