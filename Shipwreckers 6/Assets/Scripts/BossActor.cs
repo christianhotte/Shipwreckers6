@@ -73,6 +73,7 @@ public class BossActor : MonoBehaviour, IShootable
         {
             ShuffleActionTable();
             currentSequence = 0;
+            if (randomActionTable.Length < 1) break;
             while (currentSequence < randomActionTable.Length)
             {
                 Debug.Log(randomActionTable[currentSequence].bas.sequenceName);
@@ -88,6 +89,7 @@ public class BossActor : MonoBehaviour, IShootable
             }
             Debug.Log("--------------");
         }
+        yield return new WaitForSeconds(1.0f);
     }
     IEnumerator WaitThenMove(BossAction action)
     {
