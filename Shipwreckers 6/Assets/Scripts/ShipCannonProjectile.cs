@@ -14,6 +14,8 @@ public class ShipCannonProjectile : MonoBehaviour
     [SerializeField] [Tooltip("How many degrees per second projectile is able to home in by")] private float homingStrength;
     [SerializeField] [Tooltip("Distance to target at which projectile will stop homing in")] private float homingEndDist;
 
+    [Header("Projectile Settings:")]
+    [SerializeField] [Tooltip("Prefab spawned when object is cut by sword, object cannot be cut if left null")] private GameObject cutPrefab;
 
     //RUNTIME METHODS:
     private void Awake()
