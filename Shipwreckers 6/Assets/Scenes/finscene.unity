@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1649826107, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038101, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -144,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038106, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 4.102
       objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038106, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -513,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &387837751
 Transform:
   m_ObjectHideFlags: 0
@@ -545,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   polar_reposition: 1
-  polarCenter: {x: 0, y: 0, z: 0}
+  polarCenter: {x: -1.316, y: 4.102, z: 1.024}
   angle: 0
   radius: 30
   rotate_speed: 1

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthManager : MonoBehaviour
 {
@@ -115,5 +116,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         //Player death sequence:
         currentHealth = 5; //Reset health value
+        //Send player to the dead island
+        SceneManager.LoadScene("deadscene");
     }
 }
