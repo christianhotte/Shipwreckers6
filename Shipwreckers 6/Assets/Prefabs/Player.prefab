@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 171436515}
   - component: {fileID: 171436519}
   - component: {fileID: 171436518}
-  - component: {fileID: 171436517}
   - component: {fileID: 171436516}
   m_Layer: 8
   m_Name: FadePlane
@@ -83,20 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &171436517
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171436514}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &171436516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,11 +1576,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee90f11aac9f06148a59421cafec4bf8, type: 3}
---- !u!4 &7538545096300688266 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2937121391747859102, guid: ee90f11aac9f06148a59421cafec4bf8, type: 3}
-  m_PrefabInstance: {fileID: 4637734045304156436}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5033048360328072301 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 397566205870833017, guid: ee90f11aac9f06148a59421cafec4bf8, type: 3}
@@ -1607,6 +1587,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c2ae58b90c8194187ae09abaf93a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7538545096300688266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2937121391747859102, guid: ee90f11aac9f06148a59421cafec4bf8, type: 3}
+  m_PrefabInstance: {fileID: 4637734045304156436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7769704602335979949
 PrefabInstance:
   m_ObjectHideFlags: 0
