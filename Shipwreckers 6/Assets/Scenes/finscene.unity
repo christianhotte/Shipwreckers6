@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1649826107, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038101, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -148,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038106, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.102
+      value: 4.451
       objectReference: {fileID: 0}
     - target: {fileID: 7173569148789038106, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -556,7 +552,7 @@ MonoBehaviour:
   approach_speed: 1
   move_to_waypoint: 1
   waypoint_angle: 0.5
-  waypoint_radius: 40
+  waypoint_radius: 45
 --- !u!114 &387837753
 MonoBehaviour:
   m_ObjectHideFlags: 0

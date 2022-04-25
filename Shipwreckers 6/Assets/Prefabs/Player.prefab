@@ -1526,6 +1526,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7173569148579810304}
     m_Modifications:
+    - target: {fileID: 397566205870833017, guid: ee90f11aac9f06148a59421cafec4bf8, type: 3}
+      propertyPath: aura
+      value: 
+      objectReference: {fileID: 5069764645437528317, guid: 0d601b8fe44939241a0ce0a2cfc0a2b5, type: 3}
     - target: {fileID: 2937121391747859102, guid: ee90f11aac9f06148a59421cafec4bf8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1655,6 +1659,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -920349909855434820, guid: dd293f25f2f305c46a3ffaabafe002ca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9c68b735ca1bcc46816089d78f114f8, type: 2}
+    - target: {fileID: -920349909855434820, guid: dd293f25f2f305c46a3ffaabafe002ca, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea304f40400f0bf4faf08c63b42bec42, type: 2}
     - target: {fileID: 919132149155446097, guid: dd293f25f2f305c46a3ffaabafe002ca, type: 3}
       propertyPath: m_Name
       value: Hand_demo1

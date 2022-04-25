@@ -39,6 +39,11 @@ public class ImportantObject : MonoBehaviour
         transform.rotation = startRot;
         transform.parent = transform.root;
         if (grabscript != null) grabscript.isGrabbable = true;
+        Transform aura = transform.Find("Aura");
+        if (aura != null)
+        {
+            Destroy(aura.gameObject);
+        }
     }
     public bool IsLoaded()
     {

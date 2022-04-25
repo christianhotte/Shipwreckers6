@@ -10,6 +10,9 @@ public class Cannon : MonoBehaviour
 {
     //Classes, Enums & Structs:
 
+    //Prefab References:
+    [SerializeField] private GameObject aura; //Aura prefab to be attached to any projectile when fired
+
     //Objects & Components:
     private Transform barrel;   //Transform for barrel mesh object (used in reciprocation visual)
     private Transform receiver; //Transform for receiver mesh object
@@ -210,6 +213,16 @@ public class Cannon : MonoBehaviour
             currentAmmo.transform.parent = transform.root;                            //Unchild projectile
             currentAmmo.IsFired();                                                    //Indicate to projectile that it has been fired
             currentAmmo.rb.AddForce(shotDirection * currentForce, ForceMode.Impulse); //Shoot projectile in direction cannon is facing according to current shotforce
+
+            //Add aura to projectile:
+            if (aura != null)
+            {
+                GameObject newaura = Instantiate(aura);
+                newaura.transform.localScale = Vector3.one/2.0f;
+                newaura.transform.parent = currentAmmo.transform;
+                newaura.transform.localPosition = Vector3.zero;
+                newaura.name = "Aura";
+            }
         }
 
         //Cleanup:

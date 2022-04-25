@@ -6,19 +6,27 @@ public class FadePlane : MonoBehaviour
 {
     public static FadePlane fp;
     private MeshRenderer mr;
+
+    private Color icolor;
+    private float fadeSpeed = 0.5f;
     private void Awake()
     {
         fp = this;
         mr = GetComponent<MeshRenderer>();
+        icolor = mr.material.color;
     }
 
     private void OnEnable()
     {
-        FadeTo(Color.white);
+        StartCoroutine(WaitThenFade(Color.white));
+        //FadeTo(Color.white);
     }
-
-    private Color icolor;
-    private float fadeSpeed = 0.5f;
+    
+    IEnumerator WaitThenFade(Color _to)
+    {
+        yield return new WaitForSeconds(2.0f);
+        FadeTo(_to);
+    }
     public void FadeTo(Color _to)
     {
         icolor = _to;

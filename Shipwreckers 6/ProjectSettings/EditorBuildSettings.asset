@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/deadscene.unity
+    guid: 8faab5bfb760a5c4f98f8473bb727741
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b73ff672f5d7b014ca6cfa3553997ea1, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4826a14ce342f664dabbb7643c4178fe, type: 2}
