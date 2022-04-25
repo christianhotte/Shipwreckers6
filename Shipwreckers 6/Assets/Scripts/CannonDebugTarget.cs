@@ -8,8 +8,8 @@ public class CannonDebugTarget : MonoBehaviour
     {
         for (;;)
         {
-            ShipCannon.FireAllCannonsAtTarget(transform, 90, 2f);
-            yield return new WaitForSeconds(4f);
+            ShipCannon.FireAllCannonsAtTarget(transform, 90, 20f);
+            yield return new WaitForSeconds(20f);
         }
     }
     private void Start()

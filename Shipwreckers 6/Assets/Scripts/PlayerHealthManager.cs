@@ -108,6 +108,7 @@ public class PlayerHealthManager : MonoBehaviour
         currentHealth -= damage;             //Subtract damage from player health total
         main.AnimateDamage();                //Play hurt animation on script instance in scene
         if (currentHealth < 0) KillPlayer(); //Kill player if they have been dealt a mortal wound
+        FadePlane.Hurt();
     }
     /// <summary>
     /// Triggers player death sequence.

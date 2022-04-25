@@ -35,4 +35,10 @@ public class FadePlane : MonoBehaviour
     {
         mr.material.color = Color.Lerp(mr.material.color, icolor, Time.deltaTime*fadeSpeed);
     }
+
+    public static void Hurt()
+    {
+        if (fp == null) return;
+        fp.mr.material.color = Color.red;
+    }
 }

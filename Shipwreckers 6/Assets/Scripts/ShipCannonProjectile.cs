@@ -31,7 +31,7 @@ public class ShipCannonProjectile : MonoBehaviour
         {
             Vector3 currentVel = rb.velocity;                                                               //Get projectile's current velocity
             Vector3 targetVel = (target.position - transform.position).normalized * currentVel.magnitude;   //Get velocity which would point projectile directly at target
-            rb.velocity = Vector3.MoveTowards(currentVel, targetVel, homingStrength * Time.fixedDeltaTime); //Modify velocity to make projectile point more toward target
+            rb.velocity = Vector3.Lerp(currentVel, targetVel, homingStrength * Time.fixedDeltaTime); //Modify velocity to make projectile point more toward target
         }
         else if (!rb.useGravity) rb.useGravity = true; //Enable gravity once projectile is close enough to target
     }

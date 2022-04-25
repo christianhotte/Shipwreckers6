@@ -244,7 +244,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6972297581346049056
 Rigidbody:
@@ -274,8 +274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fd04f05123d364b976b927407f62fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homingStrength: 7.5
-  homingEndDist: 17
+  homingStrength: 2
+  homingEndDist: 5
   cutObject: {fileID: 3261235105138343597}
   cutObjectLife: 1
 --- !u!96 &-7197868413356250110
