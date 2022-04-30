@@ -25,7 +25,6 @@ public class StopsInSand : Grabbable
                     Mathf.Clamp(lastSeenVelocity.y, -7, 7),
                     Mathf.Clamp(lastSeenVelocity.z, -7, 7)
                 )/55.0f;
-            Debug.Log(lastSeenVelocity);
             rb.isKinematic = true;
         }
     }

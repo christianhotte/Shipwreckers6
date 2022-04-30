@@ -13,6 +13,7 @@ public class ShipCannon : MonoBehaviour
 
     //Settings:
     [SerializeField] [Tooltip("Prefab for projectile object fired by this cannon")] private GameObject projectile;
+    [SerializeField] [Tooltip("Prefab for smoke puff when projectile is fired")] private GameObject smokepuff;
     [SerializeField] [Tooltip("Sound cannon makes when fired")] private AudioClip shootSound;
     [Space()]
     [SerializeField] [Tooltip("Velocity at which cannon shoots projectiles")] private float shootSpeed;
@@ -82,6 +83,9 @@ public class ShipCannon : MonoBehaviour
 
         //Effects:
         audioSource.PlayOneShot(shootSound); //Play cannon firing sound
+        GameObject newSmoke = Instantiate(smokepuff);
+        newSmoke.transform.position = barrelEnd.position;
+        Destroy(newSmoke, 5.0f);
     }
     /// <summary>
     /// Fires all cannons pointing vaguely toward target at target.

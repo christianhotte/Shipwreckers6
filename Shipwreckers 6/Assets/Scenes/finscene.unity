@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1937862265}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.72211206, b: 0.8180093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1126,37 +1126,73 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 16076904453725984, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 16076904453725984, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 643071890209080582, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 643071890209080582, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 697124055466978725, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 697124055466978725, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1194217007158163520, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 1194217007158163520, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2128899563773843460, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 2128899563773843460, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3177480479228118895, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 3177480479228118895, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3729336514877718708, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 3729336514877718708, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3759159918261435218, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 3759159918261435218, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4952519334423899813, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 4952519334423899813, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
@@ -1206,6 +1242,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5245836369426932875, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 5245836369426932875, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
@@ -1218,29 +1258,57 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5736427089637064057, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 5736427089637064057, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 5756290771032834275, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 5756290771032834275, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6925592655466272138, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 6925592655466272138, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7536144344321425629, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 7536144344321425629, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7905566003293336009, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 7905566003293336009, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7935060917447372091, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
+    - target: {fileID: 7935060917447372091, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8669781753181140331, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 8669781753181140331, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
@@ -1277,6 +1345,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -7.67
       objectReference: {fileID: 0}
+    - target: {fileID: 9178346971937819505, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
+      propertyPath: smokepuff
+      value: 
+      objectReference: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
     - target: {fileID: 9178346971937819505, guid: fd7dab96ac3cd65419648c3a7e33e48e, type: 3}
       propertyPath: shootSpeed
       value: 30
