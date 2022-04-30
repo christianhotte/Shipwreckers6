@@ -7,7 +7,7 @@ public class CannonAmmo : MonoBehaviour
     //Objects & Components:
     internal Rigidbody rb;       //Ammo rigidbody component
     internal Collider coll;      //Ammo collider component
-    private Grabbable grabbable; //Component which optionally makes this ammo grabbable
+    internal Grabbable grabbable; //Component which optionally makes this ammo grabbable
 
     //Settings:
     [Tooltip("Configuration determining ammo properties once fired")] public CannonAmmoConfig ammoProfile;
@@ -15,6 +15,7 @@ public class CannonAmmo : MonoBehaviour
     //Runtime Memory Vars:
     private bool activeProjectile; //Enables cannonball to do damage as projectile
     internal bool isLoaded;        //Whether or not this object is currently loaded in cannon
+    private float ungrabbedTime;
 
     //RUNTIME METHODS:
     private void Start()
@@ -30,6 +31,14 @@ public class CannonAmmo : MonoBehaviour
             if (!TryGetComponent(out rb)) { Debug.LogError(name + " needs a rigidbody to be grabbable"); Destroy(this); }  //Make sure object has a rigidbody
             if (!TryGetComponent(out coll)) { Debug.LogError(name + " needs a collider to be grabbable"); Destroy(this); } //Make sure object has a collider
         }
+
+        //Subscriptions:
+        grabbable.OnGrab += OnGrabbed;
+    }
+    private void Update()
+    {
+        if (!grabbable.beingGrabbed && grabbable.hasBeenGrabbed && !isLoaded && !activeProjectile) ungrabbedTime += Time.deltaTime;
+        if (ungrabbedTime >= ammoProfile.unheldDespawnTime) Despawn();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -42,6 +51,14 @@ public class CannonAmmo : MonoBehaviour
                 shot.Shoot(ammoProfile);
             }
         }
+    }
+    private void OnDisable()
+    {
+        grabbable.OnGrab -= OnGrabbed;
+    }
+    private void OnGrabbed()
+    {
+        ungrabbedTime = 0;
     }
 
     //FUNCTIONALITY METHODS:
@@ -68,5 +85,9 @@ public class CannonAmmo : MonoBehaviour
         rb.isKinematic = false;  //Make cannonball affected by physics again
         isLoaded = false;        //Indicate that object is no longer loaded
         activeProjectile = true; //Turn on projectile mode so that cannonball can do damage
+    }
+    private void Despawn()
+    {
+        Destroy(gameObject);
     }
 }

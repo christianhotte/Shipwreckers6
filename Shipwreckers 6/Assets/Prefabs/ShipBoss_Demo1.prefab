@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2432528793278989493}
   - component: {fileID: 2249061716416437340}
   m_Layer: 0
-  m_Name: Cylinder003
+  m_Name: Mast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1846441317547528201}
   - component: {fileID: 5544757311707870709}
   m_Layer: 0
-  m_Name: Cylinder007
+  m_Name: Mast2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 7587811874288503924}
   - component: {fileID: 7297983087791024546}
   m_Layer: 0
-  m_Name: Cylinder006
+  m_Name: Mast1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,8 +254,9 @@ GameObject:
   - component: {fileID: 4116589421039333429}
   - component: {fileID: 1957391390756200437}
   - component: {fileID: 3832061333509486348}
-  m_Layer: 0
-  m_Name: Box001
+  - component: {fileID: 7353542405282194692}
+  m_Layer: 9
+  m_Name: Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,6 +325,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7353542405282194692
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077514495875636017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5060444177187149915, guid: 50df4491ea61cda469729ba63a314c2a, type: 3}
 --- !u!1 &3221863202872534185
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +351,7 @@ GameObject:
   - component: {fileID: 4470725656339361117}
   - component: {fileID: 6963412032011411871}
   m_Layer: 0
-  m_Name: Teapot001
+  m_Name: Figurehead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +432,7 @@ GameObject:
   - component: {fileID: 8821893584515275572}
   - component: {fileID: 8954864573184503251}
   m_Layer: 0
-  m_Name: Cylinder001
+  m_Name: Bowsprit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

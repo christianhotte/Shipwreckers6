@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Attached to an gameobject which can be grabbed by player, contains information related to grabbing.
@@ -16,6 +17,7 @@ public class Grabbable : MonoBehaviour
     internal Transform grabOrientation; //Transform used to orient object when grabbed (optional)
     internal HandGrab currentHand;      //Hand currently holding this object
     internal bool beingGrabbed = false;
+    internal bool hasBeenGrabbed = false;
 
     //Settings:
     [Tooltip("Causes object to snap to specific position when grabbed")] public bool forceGrabPosition;
@@ -23,7 +25,7 @@ public class Grabbable : MonoBehaviour
     [Tooltip("Whether or not object may currently be grabbed")]          public bool isGrabbable = true;
 
     //Runtime Memory Vars:
-
+    public UnityAction OnGrab;
 
     //RUNTIME METHODS:
     public virtual void Awake()
@@ -36,6 +38,14 @@ public class Grabbable : MonoBehaviour
             grabOrientation = transform.Find("grabOrientation"); //Get orientation transform
             if (grabOrientation == null) { Debug.LogError(name + " needs a child named 'grabOrientation' in order to force grab position or rotation"); Destroy(this); } //Make sure object has orientation transform
         }
+
+        //Subscriptions:
+        OnGrab += OnGrabEvent;
+    }
+    private void OnDisable()
+    {
+        //Unsubscriptions:
+        OnGrab -= OnGrabEvent;
     }
 
     //PUBLIC METHODS:
@@ -47,6 +57,8 @@ public class Grabbable : MonoBehaviour
         rb.isKinematic = true;    //Make object kinematic (to negate gravity)
         currentHand = controller; //Store hand grabbing this object
         beingGrabbed = true;
+        hasBeenGrabbed = true;
+        OnGrab();
     }
     /// <summary>
     /// Called when this object is released by player.
@@ -57,4 +69,5 @@ public class Grabbable : MonoBehaviour
         currentHand = null;     //Remove reference to hand controller
         beingGrabbed = false;
     }
+    private void OnGrabEvent() { }
 }

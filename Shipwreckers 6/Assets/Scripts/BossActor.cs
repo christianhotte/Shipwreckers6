@@ -118,6 +118,6 @@ public class BossActor : MonoBehaviour, IShootable
 
     public void Shoot(CannonAmmoConfig cac)
     {
-        throw new System.NotImplementedException();
+        print("Ship's been shot");
     }
 }
