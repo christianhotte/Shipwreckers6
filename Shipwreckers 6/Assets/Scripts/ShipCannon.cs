@@ -21,6 +21,7 @@ public class ShipCannon : MonoBehaviour
     //Runtime vars:
     private float fireWaitTime;        //Time (in seconds) before cannon fires
     private Transform scheduledTarget; //Target (in world space) cannon is about to fire at
+    private int stepCannon = 0;            //Index of the next cannon to be shot
 
     //RUNTIME METHODS:
     private void Awake()
@@ -116,5 +117,23 @@ public class ShipCannon : MonoBehaviour
     public void Deploy()
     {
 
+    }
+    /// <summary>
+    /// Picks a random cannon and fires it
+    /// </summary>
+    public static void FireRandomCannon(Transform target, float maxDegrees)
+    {
+        //Find cannons which may be fired
+        List<ShipCannon> possibleCannons = new List<ShipCannon>(); //List of all cannons actually being fired
+        foreach (ShipCannon cannon in allCannons)
+        {
+            if (cannon.IsFacingTarget(target, maxDegrees)) possibleCannons.Add(cannon); //Add cannon if it is facing target
+        }
+        if (possibleCannons.Count < 1) return;
+        //Pick one of the cannons
+        int choice = Random.Range( 0, possibleCannons.Count-1 );
+        ShipCannon selected = possibleCannons[choice];
+        //Fire
+        selected.FireAtTarget(target, 0.0f); //Fire each cannon at set interval
     }
 }

@@ -12,5 +12,8 @@ public class ShootableRerouter : MonoBehaviour, IShootable
         if (!target.TryGetComponent(out shootable)) { Debug.LogError("Target does not fungible"); Destroy(this); }
     }
 
-    public void Shoot(CannonAmmoConfig cac) { shootable.Shoot(cac); }
+    public void Shoot(CannonAmmoConfig cac) {
+        Debug.Log("Rerouter hit!");
+        shootable.Shoot(cac); 
+    }
 }

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2ca36e95e5a213488baf88b81095122, type: 3}
-  m_Name: TestShotOne
+  m_Name: SpinAndTP
   m_EditorClassIdentifier: 
   bas:
     set:
-    - animName: TestFireOne
-      rotation_min: 0
-      rotation_max: 0
-      approach_min: 0
-      approach_max: 0
-      does_teleport: 0
-      move_absolute: 0
-      animation_wait_time: 0.1
-      movement_wait_time: 0.1
-      next_action_wait_time: 2
-    sequenceName: TestShotOne
+    - animName: SpinFire
+      rotation_min: -10
+      rotation_max: 10
+      approach_min: 50
+      approach_max: 60
+      does_teleport: 1
+      move_absolute: 1
+      animation_wait_time: 0
+      movement_wait_time: 5
+      next_action_wait_time: 9.5
+    sequenceName: SpinAndTp

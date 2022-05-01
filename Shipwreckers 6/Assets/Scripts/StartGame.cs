@@ -17,15 +17,18 @@ public class StartGame : SipNode
         base.TakeSip();
         foreach(Animator i in toAnimate)
         {
-            i.Play("OnStartGame");
+            if (i != null)
+                i.Play("OnStartGame");
         }
         foreach(GameObject i in toDisable)
         {
-            i.SetActive(false);
+            if (i != null)
+                i.SetActive(false);
         }
         foreach(GameObject i in toEnable)
         {
-            i.SetActive(true);
+            if (i != null)
+                i.SetActive(true);
         }
         gameStarted = true;
         ImportantObject.NoImportantObjects = true;

@@ -44,6 +44,11 @@ public class BossActor : MonoBehaviour, IShootable
     [SerializeField]
     private ShipActionSet[] actionTable;
     private ShipActionSet[] randomActionTable;
+    [SerializeField]
+    private Transform mobileorigin;
+    [SerializeField]
+    private MeshRenderer[] meshList;
+    private List<Material> colorList;
     /*
     private BossActionSequence[] actionTable;
     private BossActionSequence[] randomActionTable;
@@ -60,6 +65,20 @@ public class BossActor : MonoBehaviour, IShootable
         anim = GetComponent<Animator>();
         ShuffleActionTable();
         StartCoroutine(ShipActionLoop());
+        colorList = new List<Material>();
+        foreach(MeshRenderer mr in meshList)
+        {
+            if (mr != null)
+                colorList.Add(mr.material);
+        }
+    }
+    private void Update()
+    {
+        mobileorigin.transform.localScale = Vector3.Lerp(mobileorigin.transform.localScale, Vector3.one, Time.deltaTime);
+        foreach (Material toColor in colorList)
+        {
+            toColor.color = Color.Lerp(toColor.color, Color.white, Time.deltaTime*2.0f);
+        }
     }
 
     private void ShuffleActionTable()
@@ -76,7 +95,6 @@ public class BossActor : MonoBehaviour, IShootable
             if (randomActionTable.Length < 1) break;
             while (currentSequence < randomActionTable.Length)
             {
-                Debug.Log(randomActionTable[currentSequence].bas.sequenceName);
                 currentActionInSequence = 0;
                 while (currentActionInSequence < randomActionTable[currentSequence].bas.set.Length)
                 {
@@ -87,7 +105,6 @@ public class BossActor : MonoBehaviour, IShootable
                 }
                 currentSequence++;
             }
-            Debug.Log("--------------");
         }
         yield return new WaitForSeconds(1.0f);
     }
@@ -113,11 +130,31 @@ public class BossActor : MonoBehaviour, IShootable
 
     public void FireCannon()
     {
-        ShipCannon.FireAllCannonsAtTarget(playerHead, 25.0f, 0.1f);
+        //ShipCannon.FireAllCannonsAtTarget(playerHead, 90.0f, 0.1f);
+        ShipCannon.FireRandomCannon(playerHead, 90.0f);
     }
 
     public void Shoot(CannonAmmoConfig cac)
     {
         print("Ship's been shot");
+        health -= 1;
+        if (health < 1)
+        {
+            // Shot and dies
+            Destroy(gameObject, 10);
+            if (anim != null)
+            {
+                anim.Play("Die");
+            }
+        }
+        else
+        {
+            // Shot and lives
+            mobileorigin.localScale = new Vector3(1.0f, 1.2f, 1.0f);
+            foreach (Material toColor in colorList)
+            {
+                toColor.color = Color.red;
+            }
+        }
     }
 }

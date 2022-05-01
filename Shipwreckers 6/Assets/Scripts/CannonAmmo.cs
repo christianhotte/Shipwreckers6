@@ -49,6 +49,7 @@ public class CannonAmmo : MonoBehaviour
             if (shot != null)
             {
                 shot.Shoot(ammoProfile);
+                Destroy(gameObject);
             }
         }
     }
