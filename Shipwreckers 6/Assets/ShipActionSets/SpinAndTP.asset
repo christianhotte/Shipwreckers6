@@ -15,6 +15,16 @@ MonoBehaviour:
   bas:
     set:
     - animName: SpinFire
+      rotation_min: 0
+      rotation_max: 0
+      approach_min: 100
+      approach_max: 100
+      does_teleport: 0
+      move_absolute: 0
+      animation_wait_time: 0
+      movement_wait_time: 0
+      next_action_wait_time: 1
+    - animName: SpinFire
       rotation_min: -10
       rotation_max: 10
       approach_min: 50
@@ -22,6 +32,6 @@ MonoBehaviour:
       does_teleport: 1
       move_absolute: 1
       animation_wait_time: 0
-      movement_wait_time: 5
+      movement_wait_time: 4.5
       next_action_wait_time: 9.5
     sequenceName: SpinAndTp

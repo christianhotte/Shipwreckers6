@@ -6,13 +6,19 @@ public class ShipCannonProjectile : MonoBehaviour
 {
     //Objects & Components:
     /// <summary>Position shot projectile will home toward.</summary>
-    internal Transform target;
+    internal Vector3 target;
     private Rigidbody rb;      //This projectile's rigidbody component
+    private float startDistFromTarget; //Distance from target set on awake
+    private float currentDistFromTarget; //Distance from target set every frame
+    internal float startSpeed; //Speed at the start
+    internal float endSpeed; //Speed at the end
+    private float currentSpeed; //Calculated speed right now
+    private bool stillHoming; //Is the projectile homing?
 
     //Settings:
     [Header("Homing Settings:")]
-    [SerializeField] [Tooltip("How many degrees per second projectile is able to home in by")] private float homingStrength;
-    [SerializeField] [Tooltip("Distance to target at which projectile will stop homing in")] private float homingEndDist;
+    [SerializeField] [Tooltip("How many degrees per second projectile is able to home in by")] internal float homingStrength;
+    [SerializeField] [Tooltip("Distance to target at which projectile will stop homing in")] internal float homingEndDist;
 
     [Header("Projectile Settings:")]
     [SerializeField] [Tooltip("Opject enabled when projectile is cut by sword, object cannot be cut if left null")] private GameObject cutObject;
@@ -23,17 +29,26 @@ public class ShipCannonProjectile : MonoBehaviour
     {
         //Get objects & components:
         rb = GetComponent<Rigidbody>(); //Get rigidbody component
+        startDistFromTarget = Vector3.Distance(target, transform.position);
+        stillHoming = true;
     }
     private void FixedUpdate()
     {
+        currentDistFromTarget = Vector3.Distance(target, transform.position);
+        currentSpeed = Mathf.Lerp(startSpeed, endSpeed, 1.0f-(currentDistFromTarget/startDistFromTarget) );
+        //currentSpeed = startSpeed;
         //Projectile homing:
-        if (Vector3.Distance(target.position, transform.position) > homingEndDist) //Projectile is far enough away to keep homing in
+        if (currentDistFromTarget > homingEndDist && stillHoming) //Projectile is far enough away to keep homing in
         {
             Vector3 currentVel = rb.velocity;                                                               //Get projectile's current velocity
-            Vector3 targetVel = (target.position - transform.position).normalized * currentVel.magnitude;   //Get velocity which would point projectile directly at target
+            Vector3 targetVel = (target - transform.position).normalized * currentSpeed;   //Get velocity which would point projectile directly at target
             rb.velocity = Vector3.Lerp(currentVel, targetVel, homingStrength * Time.fixedDeltaTime); //Modify velocity to make projectile point more toward target
         }
-        else if (!rb.useGravity) rb.useGravity = true; //Enable gravity once projectile is close enough to target
+        else if (!rb.useGravity)
+        {
+            // rb.useGravity = true; //Enable gravity once projectile is close enough to target
+            stillHoming = false;
+        }
     }
     private void OnTriggerEnter(Collider collider)
     {

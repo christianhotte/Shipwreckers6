@@ -41,7 +41,7 @@ public class ShipCannon : MonoBehaviour
             fireWaitTime -= Time.deltaTime;
             if (fireWaitTime <= 0)
             {
-                FireAtTarget(scheduledTarget, 0);
+                FireAtTarget(scheduledTarget);
                 fireWaitTime = 0;
             }
         }
@@ -65,7 +65,7 @@ public class ShipCannon : MonoBehaviour
     /// Triggers cannon firing sequence.
     /// </summary>
     /// <param name="waitTime">Time for cannon to wait before firing.</param>
-    public void FireAtTarget(Transform target, float waitTime)
+    public void FireAtTarget(Transform target, float waitTime, float startShootSpeed, float endShootSpeed, Vector3 inaccuracy, float homingStrength, float homingEndDist)
     {
         //Delayed fire protocol:
         if (waitTime > 0) //Cannon is being scheduled to fire
@@ -77,16 +77,31 @@ public class ShipCannon : MonoBehaviour
 
         //Generate projectile:
         GameObject newProjectile = Instantiate(projectile, barrelEnd.position, barrelEnd.transform.rotation); //Generate a new cannonball
-        newProjectile.GetComponent<Rigidbody>().velocity = barrelEnd.forward * shootSpeed;                    //Set projectile velocity to fire at player
+        newProjectile.GetComponent<Rigidbody>().velocity = barrelEnd.forward * startShootSpeed;                    //Set projectile velocity to fire at player
 
         //Setup projectile:
-        newProjectile.GetComponent<ShipCannonProjectile>().target = target; //Indicate to projectile where its target is
+        Vector3 offset = new Vector3(
+                Random.Range(-inaccuracy.x, inaccuracy.x),
+                Random.Range(-inaccuracy.y, inaccuracy.y),
+                Random.Range(-inaccuracy.z, inaccuracy.z)
+            );
+        ShipCannonProjectile projScript = newProjectile.GetComponent<ShipCannonProjectile>();
+        projScript.target = target.position + offset; //Indicate to projectile where its target is
+        projScript.startSpeed = startShootSpeed;
+        projScript.endSpeed = endShootSpeed;
+        if (homingStrength > 0) projScript.homingStrength = homingStrength;
+        if (homingEndDist > 0) projScript.homingEndDist = homingEndDist;
+        
 
         //Effects:
         audioSource.PlayOneShot(shootSound); //Play cannon firing sound
         GameObject newSmoke = Instantiate(smokepuff);
         newSmoke.transform.position = barrelEnd.position;
         Destroy(newSmoke, 5.0f);
+    }
+    public void FireAtTarget(Transform target)
+    {
+        FireAtTarget(target, 0, Vector3.Distance(transform.position, target.position), 4, new Vector3(0.5f, 0.0f, 0.5f), Vector3.Distance(transform.position, target.position)*0.08f, 5);
     }
     /// <summary>
     /// Fires all cannons pointing vaguely toward target at target.
@@ -108,7 +123,7 @@ public class ShipCannon : MonoBehaviour
         float interval = sequenceTime / firingCannons.Count; //Find interval (in seconds) between each cannon firing
         for (int i = 0; i < firingCannons.Count; i++) //Iterate through each cannon in firing list
         {
-            firingCannons[i].FireAtTarget(target, interval * i); //Fire each cannon at set interval
+            firingCannons[i].FireAtTarget(target); //Fire each cannon at set interval
         }
     }
     /// <summary>
@@ -134,6 +149,6 @@ public class ShipCannon : MonoBehaviour
         int choice = Random.Range( 0, possibleCannons.Count-1 );
         ShipCannon selected = possibleCannons[choice];
         //Fire
-        selected.FireAtTarget(target, 0.0f); //Fire each cannon at set interval
+        selected.FireAtTarget(target); //Fire each cannon at set interval
     }
 }
