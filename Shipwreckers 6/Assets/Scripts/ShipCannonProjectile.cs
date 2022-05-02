@@ -23,6 +23,8 @@ public class ShipCannonProjectile : MonoBehaviour
     [Header("Projectile Settings:")]
     [SerializeField] [Tooltip("Opject enabled when projectile is cut by sword, object cannot be cut if left null")] private GameObject cutObject;
     [SerializeField] [Tooltip("How long (in seconds) cut object lasts after being spawned")] private float cutObjectLife;
+    [SerializeField] private bool isBomb;
+    [SerializeField] private GameObject explosion;
 
     //RUNTIME METHODS:
     private void Awake()
@@ -71,6 +73,15 @@ public class ShipCannonProjectile : MonoBehaviour
     /// <param name="separationForce">How much force to add to separate cannonball halves</param>
     public bool AttemptToCut(Vector3 direction, float separationForce)
     {
+        if (isBomb)
+        {
+            GameObject newExplo = Instantiate(explosion);
+            newExplo.transform.position = transform.position;
+            Destroy(gameObject);
+            Destroy(newExplo, 5.0f);
+            PlayerHealthManager.HurtPlayer(1);
+            return false;
+        }
         //Validity checks:
         if (cutObject == null) return false; //Do not attempt cut if object cannot be cut
         print("oog");
