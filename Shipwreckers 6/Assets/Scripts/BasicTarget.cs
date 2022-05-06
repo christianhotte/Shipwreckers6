@@ -17,7 +17,7 @@ public class BasicTarget : MonoBehaviour, IShootable
         transform.localScale = Vector3.Lerp(transform.localScale, startSize, Time.deltaTime*1.5f);
     }
 
-    public void Shoot(CannonAmmoConfig cac)
+    public void Shoot(CannonAmmoConfig cac, Vector3 hitp)
     {
         transform.localScale *= 0.75f;
     }

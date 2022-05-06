@@ -35,6 +35,17 @@ public struct BossActionSequence
     public string sequenceName;
 }
 
+[System.Serializable]
+public struct BossPhase
+{
+    public string phaseName;
+    public int health;
+    public ShipActionSet[] actionTable;
+    public string startAnimation;
+    public float startAnimationDuration;
+    public int nextPhaseIndex;
+}
+
 public class BossActor : MonoBehaviour, IShootable
 {
     [SerializeField]
@@ -42,29 +53,28 @@ public class BossActor : MonoBehaviour, IShootable
     private PolarMover pmove;
     private Animator anim;
     [SerializeField]
-    private ShipActionSet[] actionTable;
+    private BossPhase[] phases;
     private ShipActionSet[] randomActionTable;
     [SerializeField]
     private Transform mobileorigin;
     [SerializeField]
     private MeshRenderer[] meshList;
     private List<Material> colorList;
-    /*
-    private BossActionSequence[] actionTable;
-    private BossActionSequence[] randomActionTable;
-    */
     private int currentSequence = 0;
     private int currentActionInSequence = 0;
 
+    private bool dead;
+    private int phaseIndex = 0;
+    private bool phaseTransforming = false;
+
     [SerializeField]
-    private int health;
+    private GameObject exploPrefab;
 
     private void Awake()
     {
         pmove = GetComponent<PolarMover>();
         anim = GetComponent<Animator>();
-        ShuffleActionTable();
-        StartCoroutine(ShipActionLoop());
+        StartCoroutine(NewPhase(0));
         colorList = new List<Material>();
         foreach(MeshRenderer mr in meshList)
         {
@@ -83,12 +93,29 @@ public class BossActor : MonoBehaviour, IShootable
 
     private void ShuffleActionTable()
     {
-        randomActionTable = actionTable.OrderBy(x => (int)Random.Range(0,9999999)).ToArray();
+        randomActionTable = phases[phaseIndex].actionTable.OrderBy(x => (int)Random.Range(0,9999999)).ToArray();
+    }
+
+    IEnumerator NewPhase(int newPhaseIndex)
+    {
+        phaseIndex = newPhaseIndex;
+        if (phaseIndex < 0 || phaseIndex >= phases.Length)
+        {
+            dead = true;
+        }
+        else
+        {
+            phaseTransforming = true;
+            anim.Play(phases[phaseIndex].startAnimation);
+            yield return new WaitForSeconds(phases[phaseIndex].startAnimationDuration);
+            phaseTransforming = false;
+            StartCoroutine(ShipActionLoop());
+        }
     }
 
     IEnumerator ShipActionLoop()
     {
-        while (health > 0)
+        while (!dead && !phaseTransforming)
         {
             ShuffleActionTable();
             currentSequence = 0;
@@ -134,27 +161,33 @@ public class BossActor : MonoBehaviour, IShootable
         ShipCannon.FireRandomCannon(playerHead, 90.0f);
     }
 
-    public void Shoot(CannonAmmoConfig cac)
+    public void Shoot(CannonAmmoConfig cac, Vector3 hitp)
     {
-        print("Ship's been shot");
-        health -= 1;
-        if (health < 1)
+        if (phaseTransforming || dead)
         {
-            // Shot and dies
+            return;
+        }
+        print("Ship's been shot");
+        phases[phaseIndex].health -= 1;
+        if (phases[phaseIndex].health < 1)
+        {
+            // Shot and phase ends
             Destroy(gameObject, 10);
-            if (anim != null)
-            {
-                anim.Play("Die");
-            }
+            StopAllCoroutines();
+            StartCoroutine(NewPhase(phases[phaseIndex].nextPhaseIndex));
         }
         else
         {
-            // Shot and lives
+            // Shot and phase continues
             mobileorigin.localScale = new Vector3(1.0f, 1.2f, 1.0f);
             foreach (Material toColor in colorList)
             {
                 toColor.color = Color.red;
             }
         }
+        // Spawn explosion
+        GameObject exp = Instantiate(exploPrefab);
+        exp.transform.position = hitp;
+        Destroy(exp, 5.0f);
     }
 }

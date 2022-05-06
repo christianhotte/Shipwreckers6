@@ -163,6 +163,8 @@ MonoBehaviour:
   homingEndDist: 5
   cutObject: {fileID: 0}
   cutObjectLife: 1
+  isBomb: 1
+  explosion: {fileID: 9170202543402206095, guid: af0b78681560fc443b51e751419e9b4e, type: 3}
 --- !u!96 &-7197868413356250110
 TrailRenderer:
   serializedVersion: 2

@@ -21,7 +21,6 @@ public class ShipCannon : MonoBehaviour
     //Runtime vars:
     private float fireWaitTime;        //Time (in seconds) before cannon fires
     private Transform scheduledTarget; //Target (in world space) cannon is about to fire at
-    private int stepCannon = 0;            //Index of the next cannon to be shot
 
     //RUNTIME METHODS:
     private void Awake()

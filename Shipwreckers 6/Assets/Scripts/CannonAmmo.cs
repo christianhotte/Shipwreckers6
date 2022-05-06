@@ -52,7 +52,7 @@ public class CannonAmmo : MonoBehaviour
             IShootable shot = collision.gameObject.GetComponent<IShootable>();
             if (shot != null)
             {
-                shot.Shoot(ammoProfile);
+                shot.Shoot(ammoProfile, collision.contacts[0].point);
                 Destroy(gameObject);
             }
         }

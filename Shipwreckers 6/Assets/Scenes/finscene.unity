@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1937862265}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.72211206, b: 0.8180093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1129,7 +1129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &387837751
 Transform:
   m_ObjectHideFlags: 0
@@ -1179,11 +1179,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHead: {fileID: 102163689}
-  actionTable:
-  - {fileID: 11400000, guid: 2505fe51385c6f94b8080680ae8eb609, type: 2}
-  - {fileID: 11400000, guid: 2505fe51385c6f94b8080680ae8eb609, type: 2}
-  - {fileID: 11400000, guid: 647547680250c95459a7c165d85f0505, type: 2}
-  - {fileID: 11400000, guid: 2505fe51385c6f94b8080680ae8eb609, type: 2}
+  phases:
+  - phaseName: Small Boat
+    health: 5
+    actionTable:
+    - {fileID: 11400000, guid: 2505fe51385c6f94b8080680ae8eb609, type: 2}
+    startAnimation: SmallRise
+    startAnimationDuration: 4
+    nextPhaseIndex: 1
   mobileorigin: {fileID: 962594802}
   meshList:
   - {fileID: 3832061334279294966}
@@ -1192,7 +1195,7 @@ MonoBehaviour:
   - {fileID: 5544757312552783119}
   - {fileID: 6963412031308634469}
   - {fileID: 7297983086958612824}
-  health: 50
+  exploPrefab: {fileID: 9170202543402206095, guid: af0b78681560fc443b51e751419e9b4e, type: 3}
 --- !u!95 &387837754
 Animator:
   serializedVersion: 3
