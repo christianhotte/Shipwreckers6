@@ -11,6 +11,10 @@ public class StartGame : SipNode
     [SerializeField]
     private List<GameObject> toEnable;
     private static bool gameStarted;
+    private void Start()
+    {
+        gameStarted = false;
+    }
     public override void TakeSip()
     {
         if (gameStarted) return;

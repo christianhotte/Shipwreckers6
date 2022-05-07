@@ -26,7 +26,6 @@ public class ShipCannon : MonoBehaviour
     private void Awake()
     {
         //Initialize:
-        allCannons.Add(this); //Add this cannon to cannon list upon creation
         if (projectile.GetComponent<ShipCannonProjectile>() == null) Debug.LogError("Cannon projectile is missing ShipCannonProjectile script");
 
         //Get objects & components:
@@ -100,7 +99,7 @@ public class ShipCannon : MonoBehaviour
     }
     public void FireAtTarget(Transform target)
     {
-        FireAtTarget(target, 0, Vector3.Distance(transform.position, target.position), 4, new Vector3(0.5f, 0.0f, 0.5f), Vector3.Distance(transform.position, target.position)*0.08f, 5);
+        FireAtTarget(target, 0, Vector3.Distance(transform.position, target.position), 4, new Vector3(0.1f, 0.0f, 0.1f), Vector3.Distance(transform.position, target.position)*0.1f, 5);
     }
     /// <summary>
     /// Fires all cannons pointing vaguely toward target at target.
@@ -149,5 +148,13 @@ public class ShipCannon : MonoBehaviour
         ShipCannon selected = possibleCannons[choice];
         //Fire
         selected.FireAtTarget(target); //Fire each cannon at set interval
+    }
+    private void OnEnable()
+    {
+        allCannons.Add(this); //Add this cannon to cannon list upon being enabled
+    }
+    private void OnDisable()
+    {
+        allCannons.Remove(this); //Remove this cannon from the list upon being disabled
     }
 }

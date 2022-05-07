@@ -102,6 +102,7 @@ public class BossActor : MonoBehaviour, IShootable
         if (phaseIndex < 0 || phaseIndex >= phases.Length)
         {
             dead = true;
+            Destroy(gameObject, 10);
         }
         else
         {
@@ -172,7 +173,6 @@ public class BossActor : MonoBehaviour, IShootable
         if (phases[phaseIndex].health < 1)
         {
             // Shot and phase ends
-            Destroy(gameObject, 10);
             StopAllCoroutines();
             StartCoroutine(NewPhase(phases[phaseIndex].nextPhaseIndex));
         }

@@ -28,6 +28,7 @@ public class ImportantObject : MonoBehaviour
     {
         startPos = transform.position;
         startRot = transform.rotation;
+        NoImportantObjects = false;
     }
 
     private void BackToStart()

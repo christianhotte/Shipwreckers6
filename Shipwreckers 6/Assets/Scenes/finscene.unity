@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 6bfab16f387f95e4bb60f866299be241, type: 2}
   m_HaloStrength: 0.5
@@ -1129,7 +1129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &387837751
 Transform:
   m_ObjectHideFlags: 0
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   approach_speed: 1
   move_to_waypoint: 1
   waypoint_angle: 0.5
-  waypoint_radius: 45
+  waypoint_radius: 60
 --- !u!114 &387837753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,6 +1187,13 @@ MonoBehaviour:
     startAnimation: SmallRise
     startAnimationDuration: 4
     nextPhaseIndex: 1
+  - phaseName: Test2
+    health: 5
+    actionTable:
+    - {fileID: 11400000, guid: 647547680250c95459a7c165d85f0505, type: 2}
+    startAnimation: SmallRise
+    startAnimationDuration: 4
+    nextPhaseIndex: -1
   mobileorigin: {fileID: 962594802}
   meshList:
   - {fileID: 3832061334279294966}
