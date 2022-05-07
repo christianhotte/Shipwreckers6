@@ -70,6 +70,14 @@ public class BossActor : MonoBehaviour, IShootable
     [SerializeField]
     private GameObject exploPrefab;
 
+    private AudioSource audGen; // General audio player
+    [SerializeField]
+    private AudioSource creakAud; // Creak audio source
+    [SerializeField]
+    private AudioSource splashAud; // Splash audio source
+    [SerializeField]
+    private AudioSource takeDmgAud; // Take damage audio source
+
     private void Awake()
     {
         pmove = GetComponent<PolarMover>();
@@ -81,6 +89,7 @@ public class BossActor : MonoBehaviour, IShootable
             if (mr != null)
                 colorList.Add(mr.material);
         }
+        audGen = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -189,5 +198,21 @@ public class BossActor : MonoBehaviour, IShootable
         GameObject exp = Instantiate(exploPrefab);
         exp.transform.position = hitp;
         Destroy(exp, 5.0f);
+    }
+
+    //----------------------------------------
+    // --- SOUND EFFECT METHODS ---
+    //----------------------------------------
+    public void PlayCreak()
+    {
+        if (creakAud != null) creakAud.Play();
+    }
+    public void PlaySplash()
+    {
+        if (splashAud != null) splashAud.Play();
+    }
+    public void PlayTakeDmg()
+    {
+        if (takeDmgAud != null) takeDmgAud.Play();
     }
 }
