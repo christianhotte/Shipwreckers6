@@ -9,6 +9,7 @@ public class ShootableRerouter : MonoBehaviour, IShootable
 
     private void Awake()
     {
+        if (target == null) { Debug.LogWarning("Shootable rerouter has no target and is being destroyed for testing purposes"); Destroy(this); return; }
         if (!target.TryGetComponent(out shootable)) { Debug.LogError("Target does not fungible"); Destroy(this); }
     }
 
