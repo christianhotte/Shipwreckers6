@@ -198,6 +198,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &46663335 stripped
@@ -279,6 +291,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -366,6 +390,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -668,6 +704,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &214410932 stripped
@@ -704,7 +752,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9fcbd9e186d142a4096e7122665ab7e8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.586
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1081,7 +1129,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1147,7 +1195,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 897850d090985804b904f3aa3bc80385, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1e8c816e602d18944a2d020a7d6ebf4e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1158,7 +1206,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1000
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1208,7 +1256,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1322,6 +1370,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &375207734 stripped
@@ -1415,6 +1475,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -1788,6 +1860,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &482624919 stripped
@@ -1874,6 +1958,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -2120,6 +2216,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &665925682 stripped
@@ -2201,6 +2309,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -2627,6 +2747,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &987415456 stripped
@@ -2708,6 +2840,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -2814,6 +2958,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &1141888716 stripped
@@ -2859,7 +3015,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1000
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2909,7 +3065,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3090,6 +3246,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -3281,6 +3449,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &1366830467 stripped
@@ -3447,6 +3627,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -3952,6 +4144,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &2017823420 stripped
@@ -4108,6 +4312,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &2145861553 stripped
@@ -4207,6 +4423,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -4317,6 +4545,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!1001 &641770345984204830
@@ -4393,6 +4633,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -4484,6 +4736,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -4735,6 +4999,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!1001 &2960143219776032198
@@ -4811,6 +5087,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -4909,6 +5197,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!1 &3221863203716930643
@@ -5003,6 +5303,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -5140,6 +5452,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!4 &4116589421745375439
@@ -5238,6 +5562,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -5343,6 +5679,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -5494,6 +5842,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!1001 &5757521401992095227
@@ -5582,6 +5942,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -5673,6 +6045,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -5776,6 +6160,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
@@ -5958,6 +6354,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!1001 &8295996962933234607
@@ -6035,6 +6443,18 @@ PrefabInstance:
       propertyPath: shootSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
 --- !u!1001 &8415880264230576201
@@ -6111,6 +6531,18 @@ PrefabInstance:
     - target: {fileID: 5119032912027359239, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
       propertyPath: shootSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: MaxDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386864763109795382, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c1d0a357715ae48b35bd198d39f0c4, type: 3}
