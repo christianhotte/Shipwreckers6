@@ -259,4 +259,11 @@ public class BossActor : MonoBehaviour, IShootable
         ShipCannon.FireSmall(playerHead, 90.0f);
     }
 
+    //----------------------------------------
+    // --- EFFECT METHODS ---
+    //----------------------------------------
+    public void ExplodeMast()
+    {
+        MastExploder.ExplodeNextMast();
+    }
 }
