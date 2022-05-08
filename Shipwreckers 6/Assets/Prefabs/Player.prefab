@@ -244,7 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoPrefab: {fileID: 6972297581346049062, guid: e17485514827e1644b249004210c19c6, type: 3}
   badMaterial: {fileID: 0}
-  grabSound: {fileID: 8300000, guid: e732ba5cf5bd9484aa4143a8e242b8e9, type: 3}
+  grabSounds:
+  - {fileID: 8300000, guid: e732ba5cf5bd9484aa4143a8e242b8e9, type: 3}
 --- !u!82 &7660100870423968378
 AudioSource:
   m_ObjectHideFlags: 0
@@ -387,7 +388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoPrefab: {fileID: 6972297581346049062, guid: e17485514827e1644b249004210c19c6, type: 3}
   badMaterial: {fileID: 2100000, guid: 1f34db9fdf6a83a42bca14dda140c3b8, type: 2}
-  grabSound: {fileID: 8300000, guid: e7be91abaf9ce484a874f48f52b89478, type: 3}
+  grabSounds:
+  - {fileID: 8300000, guid: e7be91abaf9ce484a874f48f52b89478, type: 3}
 --- !u!82 &3039073484460261116
 AudioSource:
   m_ObjectHideFlags: 0

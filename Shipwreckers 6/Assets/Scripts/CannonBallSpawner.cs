@@ -10,7 +10,7 @@ public class CannonBallSpawner : MonoBehaviour
     private AudioSource audioSource;
 
     //Settings:
-    [SerializeField, Tooltip("")] private AudioClip grabSound;
+    [SerializeField, Tooltip("")] private List<AudioClip> grabSounds = new List<AudioClip>();
 
     //Runtime Vars:
     private GameObject currentAmmo;
@@ -33,7 +33,7 @@ public class CannonBallSpawner : MonoBehaviour
         currentAmmo.GetComponent<Grabbable>().OnGrab -= OnAmmoGrabbed;
         currentAmmo.GetComponent<Renderer>().enabled = true;
         GenerateNewAmmo();
-        audioSource.PlayOneShot(grabSound);
+        audioSource.PlayOneShot(grabSounds[Random.Range(0, grabSounds.Count)]);
     }
 
     //UTILITY METHODS:
