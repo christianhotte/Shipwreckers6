@@ -6,6 +6,7 @@ public class MastExploder : MonoBehaviour
 {
     public static List<MastExploder> masts = new List<MastExploder>();
     private Rigidbody rb;
+    private Collider coll;
 
     public GameObject explosionPrefab;
     public Transform explodePoint;
@@ -20,6 +21,7 @@ public class MastExploder : MonoBehaviour
     {
         masts.Add(this);
         rb = GetComponent<Rigidbody>();
+        coll = GetComponent<Collider>();
         if (name.Contains("Top") && !name.Contains("Mid")) explodable = true;
     }
     private void Update()
@@ -45,6 +47,7 @@ public class MastExploder : MonoBehaviour
 
         transform.parent = null;
         rb.isKinematic = false;
+        Destroy(coll);
         Vector2 explodeHoriz = Random.insideUnitCircle.normalized * maxExlpodeDistance;
         Vector3 explodeDirection = new Vector3(explodeHoriz.x, explodeForce, explodeHoriz.y);
         rb.AddForceAtPosition(explodeDirection, explodePoint.position, ForceMode.Impulse);
