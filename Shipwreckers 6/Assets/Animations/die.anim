@@ -7521,8 +7521,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.0166667
+  - time: 4.3333335
     functionName: StopLargeMusic
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 4.4166665
+    functionName: StartTaps
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -82,6 +82,8 @@ public class BossActor : MonoBehaviour, IShootable
     private AudioSource smallMusic; // Player for small theme
     [SerializeField]
     private AudioSource largeMusic; // Player for large theme
+    [SerializeField]
+    private AudioSource tapsMusic; // :(
 
     private void Awake()
     {
@@ -253,6 +255,14 @@ public class BossActor : MonoBehaviour, IShootable
     public void StopLargeMusic()
     {
         largeMusic.Stop();
+    }
+    public void StartTaps()
+    {
+        tapsMusic.Play();
+    }
+    public void StopTaps()
+    {
+        tapsMusic.Stop();
     }
 
     //----------------------------------------
