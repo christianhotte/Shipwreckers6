@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2387715638622435313}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0.37816146, y: -0.37816155, z: 0.59748966, w: 0.5974896}
   m_LocalPosition: {x: -3.96, y: 0, z: 2.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4298514222514546630}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: -64.661, z: 90}
 --- !u!1 &3525389720282594684
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +130,8 @@ MonoBehaviour:
   smokepuff: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
   shootSound: {fileID: 8300000, guid: 0cf17713cc930a848a23c2089ff3a467, type: 3}
   shootSpeed: 20
+  theSmallCannon: 0
+  bombCannon: 0
 --- !u!82 &8386864763109795382
 AudioSource:
   m_ObjectHideFlags: 0

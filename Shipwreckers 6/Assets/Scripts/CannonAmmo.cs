@@ -16,6 +16,7 @@ public class CannonAmmo : MonoBehaviour
     private bool activeProjectile; //Enables cannonball to do damage as projectile
     internal bool isLoaded;        //Whether or not this object is currently loaded in cannon
     private float ungrabbedTime;
+    private float flightTime;
     private bool isImportant;
 
     //RUNTIME METHODS:
@@ -41,8 +42,11 @@ public class CannonAmmo : MonoBehaviour
     private void Update()
     {
         if (!grabbable.beingGrabbed && grabbable.hasBeenGrabbed && !isLoaded && !activeProjectile) ungrabbedTime += Time.deltaTime;
+        if (activeProjectile) flightTime += Time.deltaTime;
         if (isImportant) return;
+
         if (ungrabbedTime >= ammoProfile.unheldDespawnTime) Despawn();
+        if (flightTime >= ammoProfile.maxFlightTime) Despawn();
     }
     private void OnCollisionEnter(Collision collision)
     {

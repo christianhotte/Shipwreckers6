@@ -15,3 +15,4 @@ MonoBehaviour:
   rawDamage: 10
   isLarge: 0
   unheldDespawnTime: 5
+  maxFlightTime: 10

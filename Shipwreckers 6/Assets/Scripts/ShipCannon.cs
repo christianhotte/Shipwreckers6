@@ -7,6 +7,8 @@ public class ShipCannon : MonoBehaviour
     //Objects & Components:
     /// <summary>Master list of all ship cannons loaded in scene.</summary>
     public static List<ShipCannon> allCannons = new List<ShipCannon>();
+    public static List<ShipCannon> bombCannons = new List<ShipCannon>();
+    public static ShipCannon smallCannon;
     /// <summary>Transform representing the position and direction of the end of this cannon's barrel.</summary>
     internal Transform barrelEnd;
     private AudioSource audioSource;
@@ -17,6 +19,8 @@ public class ShipCannon : MonoBehaviour
     [SerializeField] [Tooltip("Sound cannon makes when fired")] private AudioClip shootSound;
     [Space()]
     [SerializeField] [Tooltip("Velocity at which cannon shoots projectiles")] private float shootSpeed;
+    [SerializeField] private bool theSmallCannon;
+    [SerializeField] private bool bombCannon;
 
     //Runtime vars:
     private float fireWaitTime;        //Time (in seconds) before cannon fires
@@ -149,12 +153,56 @@ public class ShipCannon : MonoBehaviour
         //Fire
         selected.FireAtTarget(target); //Fire each cannon at set interval
     }
+    public static void FireRandomBomb(Transform target, float maxDegrees)
+    {
+        //Find cannons which may be fired
+        List<ShipCannon> possibleCannons = new List<ShipCannon>(); //List of all cannons actually being fired
+        foreach (ShipCannon cannon in bombCannons)
+        {
+            if (cannon.IsFacingTarget(target, maxDegrees)) possibleCannons.Add(cannon); //Add cannon if it is facing target
+        }
+        if (possibleCannons.Count < 1) return;
+        //Pick one of the cannons
+        int choice = Random.Range( 0, possibleCannons.Count-1 );
+        ShipCannon selected = possibleCannons[choice];
+        //Fire
+        selected.FireAtTarget(target); //Fire each cannon at set interval
+    }
+    public static void FireSmall(Transform target, float maxDegrees)
+    {
+        //Pick one of the cannons
+        ShipCannon selected = smallCannon;
+        //Fire
+        selected.FireAtTarget(target); //Fire each cannon at set interval
+    }
     private void OnEnable()
     {
-        allCannons.Add(this); //Add this cannon to cannon list upon being enabled
+        if (theSmallCannon)
+        {
+            smallCannon = this;
+        }
+        else if (bombCannon)
+        {
+            bombCannons.Add(this);
+        }
+        else
+        {
+            allCannons.Add(this);
+        }
     }
     private void OnDisable()
     {
-        allCannons.Remove(this); //Remove this cannon from the list upon being disabled
+        if (theSmallCannon)
+        {
+            smallCannon = null;
+        }
+        else if (bombCannon)
+        {
+            bombCannons.Remove(this);
+        }
+        else
+        {
+            allCannons.Remove(this);
+        }
     }
 }

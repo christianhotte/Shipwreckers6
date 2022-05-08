@@ -78,6 +78,11 @@ public class BossActor : MonoBehaviour, IShootable
     [SerializeField]
     private AudioSource takeDmgAud; // Take damage audio source
 
+    [SerializeField]
+    private AudioSource smallMusic; // Player for small theme
+    [SerializeField]
+    private AudioSource largeMusic; // Player for large theme
+
     private void Awake()
     {
         pmove = GetComponent<PolarMover>();
@@ -87,7 +92,12 @@ public class BossActor : MonoBehaviour, IShootable
         foreach(MeshRenderer mr in meshList)
         {
             if (mr != null)
-                colorList.Add(mr.material);
+            {
+                foreach (Material mat in mr.materials)
+                {
+                    colorList.Add(mat);
+                }
+            }
         }
         audGen = GetComponent<AudioSource>();
     }
@@ -165,12 +175,6 @@ public class BossActor : MonoBehaviour, IShootable
         }
     }
 
-    public void FireCannon()
-    {
-        //ShipCannon.FireAllCannonsAtTarget(playerHead, 90.0f, 0.1f);
-        ShipCannon.FireRandomCannon(playerHead, 90.0f);
-    }
-
     public void Shoot(CannonAmmoConfig cac, Vector3 hitp)
     {
         if (phaseTransforming || dead)
@@ -188,7 +192,7 @@ public class BossActor : MonoBehaviour, IShootable
         else
         {
             // Shot and phase continues
-            mobileorigin.localScale = new Vector3(1.0f, 1.2f, 1.0f);
+            mobileorigin.localScale = new Vector3(1.2f, 1.2f, 1.0f);
             foreach (Material toColor in colorList)
             {
                 toColor.color = Color.red;
@@ -215,4 +219,44 @@ public class BossActor : MonoBehaviour, IShootable
     {
         if (takeDmgAud != null) takeDmgAud.Play();
     }
+
+    //----------------------------------------
+    // --- SOUND EFFECT METHODS ---
+    //----------------------------------------
+    public void StartSmallMusic()
+    {
+        smallMusic.Play();
+    }
+    public void StopSmallMusic()
+    {
+        smallMusic.Stop();
+    }
+    public void StartLargeMusic()
+    {
+        largeMusic.Play();
+    }
+    public void StopLargeMusic()
+    {
+        largeMusic.Stop();
+    }
+
+    //----------------------------------------
+    // --- FIRE METHODS ---
+    //----------------------------------------
+    public void FireCannon()
+    {
+        //ShipCannon.FireAllCannonsAtTarget(playerHead, 90.0f, 0.1f);
+        ShipCannon.FireRandomCannon(playerHead, 90.0f);
+    }
+    public void FireBomb()
+    {
+        //ShipCannon.FireAllCannonsAtTarget(playerHead, 90.0f, 0.1f);
+        ShipCannon.FireRandomBomb(playerHead, 90.0f);
+    }
+    public void FireSmall()
+    {
+        //ShipCannon.FireAllCannonsAtTarget(playerHead, 90.0f, 0.1f);
+        ShipCannon.FireSmall(playerHead, 90.0f);
+    }
+
 }

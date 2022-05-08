@@ -58,6 +58,7 @@ public class Grabbable : MonoBehaviour
         currentHand = controller; //Store hand grabbing this object
         beingGrabbed = true;
         hasBeenGrabbed = true;
+        HandGrab.main.anim.SetInteger("GrabType", 2);
         OnGrab();
     }
     /// <summary>
@@ -66,6 +67,7 @@ public class Grabbable : MonoBehaviour
     public virtual void IsReleased(HandGrab controller)
     {
         rb.isKinematic = false; //Re-enable dynamic object movement
+        HandGrab.main.anim.SetInteger("GrabType", 0);
         currentHand = null;     //Remove reference to hand controller
         beingGrabbed = false;
     }

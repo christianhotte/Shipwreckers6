@@ -12,4 +12,5 @@ public class CannonAmmoConfig : ScriptableObject
     [Tooltip("How much damage this projectile deals upon a direct hit")]               public int rawDamage;
     [Tooltip("If true, this object cannot be fit into cannon with other projectiles")] public bool isLarge;
     [Tooltip("How long after being dropped cannonballs take to despawn")] public float unheldDespawnTime;
+    public float maxFlightTime;
 }

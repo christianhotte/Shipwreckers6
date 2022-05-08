@@ -12,10 +12,11 @@ public class HandGrab : MonoBehaviour
     //Classes, Enums & Structs:
 
     //Objects & Components:
+    public static HandGrab main;
     private Transform grabAnchor;  //Transform where grabbed objects stick to
     private Grabbable hoverObject; //Grabbable object hand is currently able to grab (if any)
     private Grabbable heldObject;  //Grabbable object currently being held by hand (if any)
-    private Animator anim;         //Animator on child hand model
+    internal Animator anim;         //Animator on child hand model
 
     //Settings:
     [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
@@ -28,6 +29,10 @@ public class HandGrab : MonoBehaviour
     private Quaternion prevRotation;                           //Last rotation hand object had, used to compute momentary angular velocity
 
     //RUNTIME METHODS:
+    private void Awake()
+    {
+        main = this;
+    }
     private void Start()
     {
         //Get objects & components:
