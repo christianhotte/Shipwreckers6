@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1937862265}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.72211206, b: 0.8180093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -928,7 +928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &387837751
 Transform:
   m_ObjectHideFlags: 0
@@ -987,11 +987,22 @@ MonoBehaviour:
     startAnimationDuration: 4
     nextPhaseIndex: 1
   - phaseName: Large_1
-    health: 20
+    health: 10
     actionTable:
-    - {fileID: 11400000, guid: 2505fe51385c6f94b8080680ae8eb609, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     startAnimation: Large_rise
     startAnimationDuration: 25
+    nextPhaseIndex: 2
+  - phaseName: Large_2
+    health: 20
+    actionTable:
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    startAnimation: PhaseChange
+    startAnimationDuration: 6.3
     nextPhaseIndex: -1
   mobileorigin: {fileID: 962594802}
   meshList:
