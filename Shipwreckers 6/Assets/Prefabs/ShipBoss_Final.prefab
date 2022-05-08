@@ -210,6 +210,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ce3e4bbcc31872848aa2eec95cc5419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c235f464d528a6442a726644e51f0e3f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: ce3e4bbcc31872848aa2eec95cc5419c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61b0adc82e333754b8cb2fada945a622, type: 2}
     - target: {fileID: 919132149155446097, guid: ce3e4bbcc31872848aa2eec95cc5419c, type: 3}
       propertyPath: m_Name
       value: MastMid
@@ -1156,6 +1164,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 568efdfeb4beec24e9ac3fae1743426e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: da780e9ed7865824483b06832ad9f7ed, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 568efdfeb4beec24e9ac3fae1743426e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b73195ea7405a7548a6187f7dd5e7120, type: 2}
     - target: {fileID: 919132149155446097, guid: 568efdfeb4beec24e9ac3fae1743426e, type: 3}
       propertyPath: m_Name
       value: MastBowTop
@@ -2183,6 +2199,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c463c3d368941f947b8a0892de8e509d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e7a49d147ff27543b31477358470be3, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c463c3d368941f947b8a0892de8e509d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddb3e849021afab4e8f0348062b20401, type: 2}
     - target: {fileID: 919132149155446097, guid: c463c3d368941f947b8a0892de8e509d, type: 3}
       propertyPath: m_Name
       value: MastStern
@@ -3059,6 +3083,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9efa9c016167b434f82a6742a3591e1b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19438060257b4d94c8444009c0838883, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 9efa9c016167b434f82a6742a3591e1b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: fbcc2bdbef8bf66459b02b29a5d4dfa4, type: 2}
     - target: {fileID: 919132149155446097, guid: 9efa9c016167b434f82a6742a3591e1b, type: 3}
       propertyPath: m_Name
       value: MastMidTop
@@ -3124,6 +3156,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 02102f62fe3f32045861207dda0a3d67, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 04f84d6075e93d84dbec9de8252d46bd, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 02102f62fe3f32045861207dda0a3d67, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: afba1eb335024fd4696da7b6f156c15e, type: 2}
     - target: {fileID: 919132149155446097, guid: 02102f62fe3f32045861207dda0a3d67, type: 3}
       propertyPath: m_Name
       value: MastSternTop
