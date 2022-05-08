@@ -93,6 +93,7 @@ public class Cannon : MonoBehaviour
 
         //Update timers:
         if (triggerHoldTime >= 0) triggerHoldTime += Time.deltaTime; //Increment trigger hold time if player is holding down the trigger
+        if (triggerHoldTime >= maxChargeTime) ForceFire();
     }
     private void FixedUpdate()
     {
@@ -110,13 +111,17 @@ public class Cannon : MonoBehaviour
         }
         else if (context.canceled) //Trigger is released
         {
-            float t = Mathf.Min(triggerHoldTime, maxChargeTime) / maxChargeTime; //Generate interpolant value based on how long trigger has been held down
-            float actualShotForce = Mathf.Lerp(1, maxShotForceMult, t);          //Determine shot force multiplier based on charge amount
-            float spreadMultiplier = Mathf.Lerp(1, minMultiSpreadMult, t);       //Determine shot angle reducer based on charge amount
-            Fire(actualShotForce, spreadMultiplier, false);                      //Fire cannon
-            triggerHoldTime = -1;                                                //Indicate that trigger is no longer pressed
+            ForceFire();
         }
             
+    }
+    public void ForceFire()
+    {
+        float t = Mathf.Min(triggerHoldTime, maxChargeTime) / maxChargeTime; //Generate interpolant value based on how long trigger has been held down
+        float actualShotForce = Mathf.Lerp(1, maxShotForceMult, t);          //Determine shot force multiplier based on charge amount
+        float spreadMultiplier = Mathf.Lerp(1, minMultiSpreadMult, t);       //Determine shot angle reducer based on charge amount
+        Fire(actualShotForce, spreadMultiplier, false);                      //Fire cannon
+        triggerHoldTime = -1;                                                //Indicate that trigger is no longer pressed
     }
     public void OnSingleFireInput(InputAction.CallbackContext context)
     {
