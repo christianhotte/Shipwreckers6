@@ -14,8 +14,8 @@ public class HandGrab : MonoBehaviour
     //Objects & Components:
     public static HandGrab main;
     private Transform grabAnchor;  //Transform where grabbed objects stick to
-    private Grabbable hoverObject; //Grabbable object hand is currently able to grab (if any)
-    private Grabbable heldObject;  //Grabbable object currently being held by hand (if any)
+    internal Grabbable hoverObject; //Grabbable object hand is currently able to grab (if any)
+    internal Grabbable heldObject;  //Grabbable object currently being held by hand (if any)
     internal Animator anim;         //Animator on child hand model
 
     //Settings:
@@ -27,6 +27,7 @@ public class HandGrab : MonoBehaviour
     private List<Vector3> angularVelMem = new List<Vector3>(); //List of raw angular velocity vectors from last few physics updates (in order from latest to oldest)
     private Vector3 prevPosition;                              //Last position hand object was in, used to compute momentary velocity
     private Quaternion prevRotation;                           //Last rotation hand object had, used to compute momentary angular velocity
+    internal bool holdingGrab;
 
     //RUNTIME METHODS:
     private void Awake()
@@ -106,16 +107,18 @@ public class HandGrab : MonoBehaviour
         if (context.performed) //Grip squeezed
         {
             if (heldObject == null && hoverObject != null) Grab(); //Grab object if available
+            holdingGrab = true;
         }
         else //Grip released
         {
             if (heldObject != null) Release(); //Release held object if able
+            holdingGrab = false;
         }
         
     }
 
     //FUNCTIONALITY METHODS:
-    private void Grab()
+    public void Grab()
     {
         //Function: Grabs target grabbable
 

@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 8981881161529957247}
   - component: {fileID: 6508811718526386695}
   - component: {fileID: 5560389176544325069}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LeftHand Controller
   m_TagString: Player
   m_Icon: {fileID: 0}

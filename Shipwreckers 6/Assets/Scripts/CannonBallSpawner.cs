@@ -7,16 +7,16 @@ public class CannonBallSpawner : MonoBehaviour
     //Objects & Components:
     [SerializeField, Tooltip("")] private GameObject ammoPrefab;
     [SerializeField, Tooltip("")] private Material badMaterial;
-    private AudioSource audioSource;
+    internal AudioSource audioSource;
 
     //Settings:
-    [SerializeField, Tooltip("")] private List<AudioClip> grabSounds = new List<AudioClip>();
+    [Tooltip("")] public List<AudioClip> grabSounds = new List<AudioClip>();
 
     //Runtime Vars:
-    private GameObject currentAmmo;
+    internal GameObject currentAmmo;
 
     //RUNTIME METHODS:
-    private void Awake()
+    public virtual void Awake()
     {
         //Get objects & components:
         if (!TryGetComponent(out audioSource)) { Debug.LogWarning("Cannonballspawner has no audio source"); }
@@ -28,7 +28,7 @@ public class CannonBallSpawner : MonoBehaviour
     {
         if (currentAmmo != null) { currentAmmo.GetComponent<Grabbable>().OnGrab -= OnAmmoGrabbed; }
     }
-    private void OnAmmoGrabbed()
+    public virtual void OnAmmoGrabbed()
     {
         currentAmmo.GetComponent<Grabbable>().OnGrab -= OnAmmoGrabbed;
         currentAmmo.GetComponent<Renderer>().enabled = true;
@@ -37,7 +37,7 @@ public class CannonBallSpawner : MonoBehaviour
     }
 
     //UTILITY METHODS:
-    private void GenerateNewAmmo()
+    public void GenerateNewAmmo()
     {
         currentAmmo = Instantiate(ammoPrefab, transform);
         if (badMaterial != null) currentAmmo.GetComponent<Renderer>().material = badMaterial;
