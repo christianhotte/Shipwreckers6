@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.OpenXR.Features.Interactions;
 
 /// <summary>
 /// Drives logic for loading and firing handheld cannon.
@@ -20,6 +22,7 @@ public class Cannon : MonoBehaviour
     private Transform loadZone; //Transform representing position loaded cannonballs are placed in
 
     private AudioSource audioSource; //Cannon audio source component
+    //private ActionBasedController xr;
 
     //Settings:
     [Header("Base Weapon Properties:")]
@@ -42,6 +45,10 @@ public class Cannon : MonoBehaviour
     [SerializeField] [Tooltip("How far back barrel reciprocates when firing")]                 private float barrelReciproDist;
     [SerializeField] [Tooltip("Curve describing linear motion of cannon barrel after firing")] private AnimationCurve barrelReciproCurve;
     [SerializeField] [Tooltip("Prefab containing temporary effects spawned in when firing")]   private GameObject muzzleEffectPrefab;
+
+    [Header("Haptics:")]
+    [SerializeField] private float fireVibration;
+    [SerializeField] private float maxChargeVibration;
 
     [Header("Sounds:")]
     [SerializeField] [Tooltip("Sound made when cannon is loaded")]             private AudioClip loadSound;
@@ -70,6 +77,7 @@ public class Cannon : MonoBehaviour
         muzzle = transform.Find("Muzzle"); if (muzzle == null) { Debug.LogError("Cannon needs child named 'Muzzle'"); Destroy(this); }         //Make sure cannon has muzzle
         loadZone = transform.Find("LoadZone"); if (loadZone == null) { Debug.LogError("Cannon needs child named 'LoadZone'"); Destroy(this); } //Make sure cannon has load zone
         if (!TryGetComponent(out audioSource)) { Debug.LogError("Cannon is missing an audio source"); Destroy(this); }                         //Make sure cannon has audio source
+        //xr = transform.parent.GetComponent<ActionBasedController>();
 
         //Initialize runtime vars:
         prevPosition = transform.position;                                         //Get current position of cannon to start off
@@ -228,6 +236,9 @@ public class Cannon : MonoBehaviour
                 newaura.transform.localPosition = Vector3.zero;
                 newaura.name = "Aura";
             }
+
+            //Haptics:
+            //xr.SendHapticImpulse(fireVibration, 0.3f);
         }
 
         //Cleanup:

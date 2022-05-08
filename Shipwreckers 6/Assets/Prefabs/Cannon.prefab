@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c2ae58b90c8194187ae09abaf93a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aura: {fileID: 0}
   shotForce: 50
   spinForce: 1
   maxAmmo: 5
@@ -172,6 +173,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   muzzleEffectPrefab: {fileID: 0}
+  fireVibration: 100
+  maxChargeVibration: 0.5
   loadSound: {fileID: 8300000, guid: 30d22e6426b26f64c9877d0e02413342, type: 3}
   fireSound: {fileID: 8300000, guid: 0cf17713cc930a848a23c2089ff3a467, type: 3}
   dryFireSound: {fileID: 8300000, guid: 634ec33c1c78074408869b3ec41964ab, type: 3}
