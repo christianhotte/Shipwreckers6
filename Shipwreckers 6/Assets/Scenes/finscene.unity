@@ -928,7 +928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &387837751
 Transform:
   m_ObjectHideFlags: 0
@@ -987,14 +987,69 @@ MonoBehaviour:
     startAnimationDuration: 4
     nextPhaseIndex: 1
   - phaseName: Large_1
-    health: 10
+    health: 3
     actionTable:
     - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     startAnimation: Large_rise
     startAnimationDuration: 19.5
     nextPhaseIndex: 2
   - phaseName: Large_2
-    health: 19
+    health: 3
+    actionTable:
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    startAnimation: PhaseChange
+    startAnimationDuration: 5
+    nextPhaseIndex: 3
+  - phaseName: Large_3
+    health: 3
+    actionTable:
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    startAnimation: PhaseChange
+    startAnimationDuration: 5
+    nextPhaseIndex: 4
+  - phaseName: Large_4
+    health: 3
+    actionTable:
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    startAnimation: PhaseChange
+    startAnimationDuration: 5
+    nextPhaseIndex: 5
+  - phaseName: Large_5
+    health: 3
+    actionTable:
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    startAnimation: PhaseChange
+    startAnimationDuration: 5
+    nextPhaseIndex: 6
+  - phaseName: Large_6
+    health: 3
+    actionTable:
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    startAnimation: PhaseChange
+    startAnimationDuration: 5
+    nextPhaseIndex: 7
+  - phaseName: Large_7
+    health: 3
     actionTable:
     - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
