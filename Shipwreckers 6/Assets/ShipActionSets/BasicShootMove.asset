@@ -16,12 +16,12 @@ MonoBehaviour:
     set:
     - animName: Large_shoot_one
       rotation_min: 0.5
-      rotation_max: 1
+      rotation_max: 0.7
       approach_min: 0
       approach_max: 0
       does_teleport: 0
       move_absolute: 0
-      animation_wait_time: 0
+      animation_wait_time: 2
       movement_wait_time: 0
-      next_action_wait_time: 2
+      next_action_wait_time: 4
     sequenceName: Basic Shoot/Move

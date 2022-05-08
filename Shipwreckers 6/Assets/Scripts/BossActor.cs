@@ -132,16 +132,30 @@ public class BossActor : MonoBehaviour, IShootable
             StartCoroutine(ShipActionLoop());
         }
     }
+    private bool PhaseCheck()
+    {
+        if (phases[phaseIndex].health < 1)
+        {
+            Debug.Log("Phase change");
+            StopAllCoroutines();
+            StartCoroutine(NewPhase(phases[phaseIndex].nextPhaseIndex));
+            return true;
+        }
+        return false;
+    }
 
     IEnumerator ShipActionLoop()
     {
-        while (!dead && !phaseTransforming)
+        bool hardStop = false;
+        while (!dead && !phaseTransforming && !hardStop)
         {
             ShuffleActionTable();
             currentSequence = 0;
             if (randomActionTable.Length < 1) break;
-            while (currentSequence < randomActionTable.Length)
+            while (currentSequence < randomActionTable.Length && !hardStop)
             {
+                hardStop = PhaseCheck();
+                if (hardStop) break;
                 currentActionInSequence = 0;
                 while (currentActionInSequence < randomActionTable[currentSequence].bas.set.Length)
                 {
@@ -177,27 +191,27 @@ public class BossActor : MonoBehaviour, IShootable
 
     public void Shoot(CannonAmmoConfig cac, Vector3 hitp)
     {
-        if (phaseTransforming || dead)
+        if (dead)
         {
             return;
         }
         print("Ship's been shot");
         phases[phaseIndex].health -= 1;
-        if (phases[phaseIndex].health < 1)
-        {
-            // Shot and phase ends
-            StopAllCoroutines();
-            StartCoroutine(NewPhase(phases[phaseIndex].nextPhaseIndex));
-        }
-        else
-        {
+        //if (phases[phaseIndex].health < 1)
+        //{
+        //    // Shot and phase ends
+        //    StopAllCoroutines();
+        //    StartCoroutine(NewPhase(phases[phaseIndex].nextPhaseIndex));
+        //}
+        //else
+        //{
             // Shot and phase continues
             mobileorigin.localScale = new Vector3(1.2f, 1.2f, 1.0f);
             foreach (Material toColor in colorList)
             {
                 toColor.color = Color.red;
             }
-        }
+        //}
         // Spawn explosion
         GameObject exp = Instantiate(exploPrefab);
         exp.transform.position = hitp;
@@ -221,7 +235,7 @@ public class BossActor : MonoBehaviour, IShootable
     }
 
     //----------------------------------------
-    // --- SOUND EFFECT METHODS ---
+    // --- MUSIC METHODS ---
     //----------------------------------------
     public void StartSmallMusic()
     {
