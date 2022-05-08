@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 6972297581346049062, guid: c24be6183bcb11d46bfab20b30a561a8, type: 3}
-  smokepuff: {fileID: 0}
+  smokepuff: {fileID: 9170202543402206095, guid: 24615d9df2b56af43a27ebf411e2ccb7, type: 3}
   shootSound: {fileID: 8300000, guid: 0cf17713cc930a848a23c2089ff3a467, type: 3}
   shootSpeed: 20
 --- !u!82 &8386864763109795382
