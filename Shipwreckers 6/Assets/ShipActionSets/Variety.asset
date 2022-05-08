@@ -10,8 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2ca36e95e5a213488baf88b81095122, type: 3}
-  m_Name: Sequence
+  m_Name: Variety
   m_EditorClassIdentifier: 
   bas:
-    set: []
-    sequenceName: 
+    set:
+    - animName: Large_bomb_and_shoot_one
+      rotation_min: 0.8
+      rotation_max: 1.2
+      approach_min: 0
+      approach_max: 0
+      does_teleport: 0
+      move_absolute: 0
+      animation_wait_time: 0
+      movement_wait_time: 0
+      next_action_wait_time: 2.4
+    sequenceName: VarietyShot
