@@ -82,8 +82,9 @@ public class PlayerHealthManager : MonoBehaviour
     private void AnimateDamage()
     {
         //Animation procedure:
-        StartCoroutine(HurtFlash());        //Start hurt flash animation
+        //StartCoroutine(HurtFlash());        //Start hurt flash animation
         audioSource.PlayOneShot(hurtSound); //Play hurt sound
+        Fingerer.main.DestroyFinger();
 
         //Cleanup:
         animHealth = currentHealth; //Indicate that health has now been visually updated

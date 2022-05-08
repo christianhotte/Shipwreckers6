@@ -64,7 +64,7 @@ public class Holsterable : Grabbable
     public override void IsGrabbed(HandGrab controller)
     {
         base.IsGrabbed(controller); //Call base grab method
-        HandGrab.main.anim.SetInteger("GrabType", 1);
+        foreach (Animator anim in Fingerer.main.anims) anim.SetInteger("GrabType", 1);
         isHolstered = false;        //Indicate that object is no longer holstered
     }
     public override void IsReleased(HandGrab controller)

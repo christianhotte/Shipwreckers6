@@ -16,7 +16,7 @@ public class HandGrab : MonoBehaviour
     private Transform grabAnchor;  //Transform where grabbed objects stick to
     internal Grabbable hoverObject; //Grabbable object hand is currently able to grab (if any)
     internal Grabbable heldObject;  //Grabbable object currently being held by hand (if any)
-    internal Animator anim;         //Animator on child hand model
+    //internal Animator anim;         //Animator on child hand model
 
     //Settings:
     [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
@@ -38,7 +38,7 @@ public class HandGrab : MonoBehaviour
     {
         //Get objects & components:
         grabAnchor = transform.Find("grabAnchor"); if (grabAnchor == null) { Debug.LogError("Hand controller needs child named grabAnchor"); Destroy(this); }
-        if (!transform.GetChild(0).TryGetComponent(out anim)) { Debug.LogError("Hand Controller needs animator in first child object"); Destroy(this); }
+        //if (!transform.GetChild(0).TryGetComponent(out anim)) { Debug.LogError("Hand Controller needs animator in first child object"); Destroy(this); }
 
         //Initialize variables:
         prevPosition = transform.position; //Get current position of hand to start off
@@ -92,7 +92,8 @@ public class HandGrab : MonoBehaviour
         if (!other.TryGetComponent(out Grabbable grabController)) return; //Ignore this if object is not grabbable
         if (!grabController.isGrabbable) return;                          //Ignore if object is not grabbable
         hoverObject = grabController;                                     //Set this object as current object being hovered over
-        anim.SetBool("Hovering", true);                                   //Indicate to aniumator that hand is hovering
+        foreach (Animator anim in Fingerer.main.anims) anim.SetBool("Hovering", true); //Indicate to aniumator that hand is hovering
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -100,7 +101,7 @@ public class HandGrab : MonoBehaviour
         if (hoverObject == null) return;                        //Ignore if not currently hovering over an object
         if (other.gameObject != hoverObject.gameObject) return; //Ignore if exiting object is not the one which is currently being hovered over
         hoverObject = null;                                     //Remove hovered object reference
-        anim.SetBool("Hovering", false);                        //Indicate to animator that hand is no longer hovering
+        foreach (Animator anim in Fingerer.main.anims) anim.SetBool("Hovering", false);                        //Indicate to animator that hand is no longer hovering
     }
     public void OnGrabInput(InputAction.CallbackContext context)
     {
@@ -141,7 +142,7 @@ public class HandGrab : MonoBehaviour
         }
 
         //Cleanup:
-        anim.SetBool("Hovering", false); //Make sure hand doesn't think it's hovering
+        foreach (Animator anim in Fingerer.main.anims) anim.SetBool("Hovering", false); //Make sure hand doesn't think it's hovering
     }
     /// <summary>
     /// Releases currently-held object from hand.
