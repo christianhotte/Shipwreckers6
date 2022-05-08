@@ -1802,6 +1802,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 5121541568891594788, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
+      propertyPath: m_Radius
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121541568891594788, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
+      propertyPath: m_Center.y
+      value: 0.005
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
 --- !u!4 &402966646390587418 stripped
