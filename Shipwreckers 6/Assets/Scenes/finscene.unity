@@ -997,7 +997,7 @@ MonoBehaviour:
   - phaseName: Large_1
     health: 3
     actionTable:
-    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     startAnimation: Large_rise
     startAnimationDuration: 19.5
     nextPhaseIndex: 2
@@ -1011,7 +1011,7 @@ MonoBehaviour:
   - phaseName: Large_3
     health: 3
     actionTable:
-    - {fileID: 11400000, guid: 3a0075b2cc0acc242b5cfb5e98b7517b, type: 2}
+    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     startAnimation: PhaseChange
     startAnimationDuration: 3
     nextPhaseIndex: 4

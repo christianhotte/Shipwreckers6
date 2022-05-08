@@ -121,7 +121,8 @@ public class BossActor : MonoBehaviour, IShootable
         if (phaseIndex < 0 || phaseIndex >= phases.Length)
         {
             dead = true;
-            Destroy(gameObject, 10);
+            anim.Play("die");
+            Destroy(gameObject, 30);
         }
         else
         {
