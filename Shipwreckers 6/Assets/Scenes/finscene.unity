@@ -989,7 +989,7 @@ MonoBehaviour:
   - phaseName: Large_1
     health: 3
     actionTable:
-    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
+    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
     startAnimation: Large_rise
     startAnimationDuration: 19.5
     nextPhaseIndex: 2
@@ -1002,18 +1002,18 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
     startAnimation: PhaseChange
-    startAnimationDuration: 5
+    startAnimationDuration: 3
     nextPhaseIndex: 3
   - phaseName: Large_3
     health: 3
     actionTable:
-    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
-    - {fileID: 11400000, guid: 19b1515aa7d6d0a45a78ddfde8aa61f2, type: 2}
-    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
-    - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
-    - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
+    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
+    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
+    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
+    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
+    - {fileID: 11400000, guid: 29114bf83c5ec484ba3d124dc22acbf4, type: 2}
     startAnimation: PhaseChange
-    startAnimationDuration: 5
+    startAnimationDuration: 3
     nextPhaseIndex: 4
   - phaseName: Large_4
     health: 3
@@ -1024,7 +1024,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
     startAnimation: PhaseChange
-    startAnimationDuration: 5
+    startAnimationDuration: 3
     nextPhaseIndex: 5
   - phaseName: Large_5
     health: 3
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
     startAnimation: PhaseChange
-    startAnimationDuration: 5
+    startAnimationDuration: 3
     nextPhaseIndex: 6
   - phaseName: Large_6
     health: 3
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a491934f184b32946b2b3496382d415b, type: 2}
     - {fileID: 11400000, guid: 4d6ca4001dac09146a20c1c9703f6e6d, type: 2}
     startAnimation: PhaseChange
-    startAnimationDuration: 5
+    startAnimationDuration: 3
     nextPhaseIndex: -1
   mobileorigin: {fileID: 962594802}
   meshList:
