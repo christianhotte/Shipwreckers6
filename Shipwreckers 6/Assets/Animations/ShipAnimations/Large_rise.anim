@@ -3563,6 +3563,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 12.2
+    functionName: PlayHaHaHa
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 15.483334
     functionName: FireCannon
     data: 

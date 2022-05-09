@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/finscene.unity
+    guid: b4d48fa4128bd0c42a5fc68c80a20edf
+  - enabled: 1
     path: Assets/Scenes/deadscene.unity
     guid: 8faab5bfb760a5c4f98f8473bb727741
   m_configObjects:
