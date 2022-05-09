@@ -49,7 +49,10 @@ MonoBehaviour:
   ammoPrefab: {fileID: 6972297581346049062, guid: e17485514827e1644b249004210c19c6, type: 3}
   badMaterial: {fileID: 0}
   grabSounds:
-  - {fileID: 8300000, guid: bbe3e715f7e6e0f4bacafa389dffc659, type: 3}
+  - {fileID: 8300000, guid: 822958819aa630a45a7f26fac81735b1, type: 3}
+  - {fileID: 8300000, guid: 8bdfb1d62e4a3414599177f0a617a6ae, type: 3}
+  - {fileID: 8300000, guid: de786976d315f154aa70816355f0aaa6, type: 3}
+  - {fileID: 8300000, guid: c4ef8f7ddcfa71f4b92f43636b529cdb, type: 3}
 --- !u!82 &641772425523971446
 AudioSource:
   m_ObjectHideFlags: 0

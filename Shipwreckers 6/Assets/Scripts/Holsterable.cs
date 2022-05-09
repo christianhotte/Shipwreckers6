@@ -25,6 +25,7 @@ public class Holsterable : Grabbable
         //Initialize:
         base.Awake();          //Call base awake method
         rb.isKinematic = true; //Make sure rigidbody is in kinematic
+        isGrabbable = false;
 
         //Check holster status:
         if (holster == null) //No holster has been designated
@@ -66,6 +67,7 @@ public class Holsterable : Grabbable
         if (context.performed)
         {
             if (HandGrab.main.heldObject != null) return;
+            isGrabbable = true;
             HandGrab.main.hoverObject = this;
             HandGrab.main.Grab();
         }
@@ -95,7 +97,7 @@ public class Holsterable : Grabbable
 
         transform.parent = holster.parent; //Reparent object to original parent
         isHolstered = true; //Indicate that object is now holstered
-        isGrabbable = true; //Indicate that object may now be grabbed
+        isGrabbable = false; //Indicate that object may now be grabbed
         GetComponent<Renderer>().enabled = false;
     }
 }

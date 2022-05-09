@@ -18,6 +18,7 @@ public class Grabbable : MonoBehaviour
     internal HandGrab currentHand;      //Hand currently holding this object
     internal bool beingGrabbed = false;
     internal bool hasBeenGrabbed = false;
+    private ImportantObject importantObj;
 
     //Settings:
     [Tooltip("Causes object to snap to specific position when grabbed")] public bool forceGrabPosition;
@@ -33,6 +34,7 @@ public class Grabbable : MonoBehaviour
         //Get objects & components:
         if (!TryGetComponent(out rb)) { Debug.LogError(name + " needs a rigidbody to be grabbable"); Destroy(this); }  //Make sure object has a rigidbody
         if (!TryGetComponent(out coll)) { Debug.LogError(name + " needs a collider to be grabbable"); Destroy(this); } //Make sure object has a collider
+        importantObj = GetComponent<ImportantObject>();
         if (forceGrabPosition || forceGrabRotation) //Object needs an orientation transform
         {
             grabOrientation = transform.Find("grabOrientation"); //Get orientation transform

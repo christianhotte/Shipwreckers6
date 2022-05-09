@@ -52,7 +52,7 @@ public class CannonAmmo : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (activeProjectile) //Stuff that happens when projectile collides with something while active
+        if (activeProjectile || collision.gameObject.layer == 4) //Stuff that happens when projectile collides with something while active
         {
             print("Projectile" + gameObject.name + " hit object: " + collision.gameObject.name);
             IShootable shot = collision.gameObject.GetComponent<IShootable>();

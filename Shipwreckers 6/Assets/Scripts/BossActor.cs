@@ -77,6 +77,14 @@ public class BossActor : MonoBehaviour, IShootable
     private AudioSource splashAud; // Splash audio source
     [SerializeField]
     private AudioSource takeDmgAud; // Take damage audio source
+    [SerializeField]
+    private AudioSource hahahaAud; // Take damage audio source
+    [SerializeField]
+    private AudioSource chopAud; // Take damage audio source
+    [SerializeField]
+    private AudioSource willhelmAud; // Take damage audio source
+    [SerializeField]
+    private AudioSource yargAud; // Take damage audio source
 
     [SerializeField]
     private AudioSource smallMusic; // Player for small theme
@@ -238,6 +246,22 @@ public class BossActor : MonoBehaviour, IShootable
     {
         if (takeDmgAud != null) takeDmgAud.Play();
     }
+    public void PlayHaHaHa()
+    {
+        if (hahahaAud != null) hahahaAud.Play();
+    }
+    public void PlayChop()
+    {
+        if (chopAud != null) chopAud.Play();
+    }
+    public void PlayWillhelm()
+    {
+        if (willhelmAud != null) willhelmAud.Play();
+    }
+    public void PlayYarg()
+    {
+        if (yargAud != null) yargAud.Play();
+    }
 
     //----------------------------------------
     // --- MUSIC METHODS ---
@@ -300,9 +324,10 @@ public class BossActor : MonoBehaviour, IShootable
     public void TheBiteOf87()
     {
         Vector3 dir = -BodyOrienter.main.transform.forward;
-        Vector3 pos = Vector3.zero + dir * 40;
-        GameObject boo = Instantiate(freddy, transform.root);
+        Vector3 pos = Vector3.zero + dir * 300;
+        GameObject boo = Instantiate(freddy);
         boo.transform.position = pos;
-        boo.transform.rotation = BodyOrienter.main.transform.rotation;
+        Vector3 e = BodyOrienter.main.transform.eulerAngles; e.x = -90;
+        boo.transform.eulerAngles = e;
     }
 }
