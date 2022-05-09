@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1575288842026389171}
   - component: {fileID: 4263892712807787623}
   - component: {fileID: 1223793117487825402}
-  - component: {fileID: 5121541568891594788}
   - component: {fileID: 2419149658440192055}
   - component: {fileID: 513013990811287513}
   - component: {fileID: 8763334022707763208}
@@ -119,19 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutSound: {fileID: 8300000, guid: a9d8b58e194c84043b6b1952e25735cf, type: 3}
   cutSeparationForce: 50
---- !u!135 &5121541568891594788
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070854691974360934}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.009
-  m_Center: {x: 0, y: -0.004, z: 0.0048899236}
 --- !u!136 &2419149658440192055
 CapsuleCollider:
   m_ObjectHideFlags: 0

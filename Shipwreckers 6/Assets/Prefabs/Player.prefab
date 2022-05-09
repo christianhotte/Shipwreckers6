@@ -105,6 +105,8 @@ GameObject:
   - component: {fileID: 851197361}
   - component: {fileID: 851197362}
   - component: {fileID: 851197363}
+  - component: {fileID: 4356410782453132920}
+  - component: {fileID: 7990835409899919247}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Player
@@ -154,6 +156,34 @@ CapsuleCollider:
   m_Height: 0.85
   m_Direction: 1
   m_Center: {x: 0, y: -0.08, z: 0}
+--- !u!54 &4356410782453132920
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851197360}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7990835409899919247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851197360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c313ce6c6b40949a6ac4839ae292ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7182056234527041933
 Animator:
   serializedVersion: 3
@@ -1583,6 +1613,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ccbf26b4-91de-404c-940e-1ca5547622a7
     m_ActionName: XRI RightHand Interaction/SingleShot
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4263892712731220385}
+        m_TargetAssemblyTypeName: Holsterable, Assembly-CSharp
+        m_MethodName: OnGrabInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 098e2623-d398-44e2-ba81-73dda9d004db
+    m_ActionName: XRI LeftHand Interaction/Sword
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: XRI Head
@@ -1985,7 +2031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 402966646475552220, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -0.591
       objectReference: {fileID: 0}
     - target: {fileID: 402966646475552220, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2023,16 +2069,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
-    - target: {fileID: 5121541568891594788, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
-      propertyPath: m_Radius
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5121541568891594788, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
-      propertyPath: m_Center.y
-      value: 0.005
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
+--- !u!114 &4263892712731220385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4263892712807787623, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
+  m_PrefabInstance: {fileID: 233862598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a4d37a0f8f7bb468377df1138d5626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &402966646390587418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 402966646475552220, guid: 5d9bf3e1c449efd4998c3777af7a6bff, type: 3}
@@ -2111,14 +2160,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f755d8813a6b6b4d8fa1200292416ec, type: 3}
---- !u!1 &67226906686642628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f755d8813a6b6b4d8fa1200292416ec, type: 3}
-  m_PrefabInstance: {fileID: 878130811544200341}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &839083706367312766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f755d8813a6b6b4d8fa1200292416ec, type: 3}
+  m_PrefabInstance: {fileID: 878130811544200341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &67226906686642628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1f755d8813a6b6b4d8fa1200292416ec, type: 3}
   m_PrefabInstance: {fileID: 878130811544200341}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2081887765678292290
@@ -2441,14 +2490,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 451e01aaef404b949855bfd3f294a7c4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ada3b0c8a5e244f9fc5ba86e5e0960, type: 3}
---- !u!4 &7382033619401049915 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5ada3b0c8a5e244f9fc5ba86e5e0960, type: 3}
-  m_PrefabInstance: {fileID: 7059666239040872656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7870481096475172225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5ada3b0c8a5e244f9fc5ba86e5e0960, type: 3}
+  m_PrefabInstance: {fileID: 7059666239040872656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7382033619401049915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5ada3b0c8a5e244f9fc5ba86e5e0960, type: 3}
   m_PrefabInstance: {fileID: 7059666239040872656}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7656077590101415747

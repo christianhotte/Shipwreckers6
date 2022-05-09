@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BodyOrienter : MonoBehaviour
 {
+    public static BodyOrienter main;
+
+    private void Awake()
+    {
+        main = this;
+    }
+
     private void Update()
     {
         Vector3 flattenedForward = transform.parent.forward; //Get parent transform's orientation

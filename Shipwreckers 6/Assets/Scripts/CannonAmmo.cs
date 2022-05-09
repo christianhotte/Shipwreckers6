@@ -13,11 +13,12 @@ public class CannonAmmo : MonoBehaviour
     [Tooltip("Configuration determining ammo properties once fired")] public CannonAmmoConfig ammoProfile;
 
     //Runtime Memory Vars:
-    private bool activeProjectile; //Enables cannonball to do damage as projectile
+    internal bool activeProjectile; //Enables cannonball to do damage as projectile
     internal bool isLoaded;        //Whether or not this object is currently loaded in cannon
     private float ungrabbedTime;
     private float flightTime;
     private bool isImportant;
+    private ImportantObject importantScript;
 
     //RUNTIME METHODS:
     private void Start()
@@ -38,6 +39,7 @@ public class CannonAmmo : MonoBehaviour
         grabbable.OnGrab += OnGrabbed;
         //Check if important
         isImportant = (GetComponent<ImportantObject>() != null);
+        if (isImportant) importantScript = GetComponent<ImportantObject>();
     }
     private void Update()
     {
@@ -57,7 +59,12 @@ public class CannonAmmo : MonoBehaviour
             if (shot != null)
             {
                 shot.Shoot(ammoProfile, collision.contacts[0].point);
+            }
+            if (!isImportant || ImportantObject.NoImportantObjects)
                 Destroy(gameObject);
+            else
+            {
+                if (importantScript != null) importantScript.BackToStart();
             }
         }
     }

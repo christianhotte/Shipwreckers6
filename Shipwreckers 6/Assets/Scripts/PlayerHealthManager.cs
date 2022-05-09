@@ -24,8 +24,8 @@ public class PlayerHealthManager : MonoBehaviour
     /// <summary>
     /// How much health the player currently has (player will die if this goes negative).
     /// </summary>
-    public static int currentHealth = 5;
-    private int animHealth = 5;        //How much health player currently has, according to animated visuals
+    public static int currentHealth = 4;
+    private int animHealth = 4;        //How much health player currently has, according to animated visuals
     private Color[] handMatOrigColors; //Starting colors of materials in player hand
     private Vector3 handOrigScale;     //Starting scale of hand model
     private Vector3 handTargScale;     //Target scale when growing hand model for hurt animation

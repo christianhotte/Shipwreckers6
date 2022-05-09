@@ -31,7 +31,7 @@ public class ImportantObject : MonoBehaviour
         NoImportantObjects = false;
     }
 
-    private void BackToStart()
+    public void BackToStart()
     {
         rb.useGravity = true;
         rb.isKinematic = false;
@@ -40,6 +40,7 @@ public class ImportantObject : MonoBehaviour
         transform.rotation = startRot;
         transform.parent = transform.root;
         if (grabscript != null) grabscript.isGrabbable = true;
+        if (ammoscript != null) ammoscript.activeProjectile = false;
         Transform aura = transform.Find("Aura");
         if (aura != null)
         {

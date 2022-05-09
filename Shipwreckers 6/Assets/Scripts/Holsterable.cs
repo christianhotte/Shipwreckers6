@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Special type of grabbable object which returns to specified holster when released.
@@ -60,12 +61,27 @@ public class Holsterable : Grabbable
         }
     }
 
+    public void OnGrabInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (HandGrab.main.heldObject != null) return;
+            HandGrab.main.hoverObject = this;
+            HandGrab.main.Grab();
+        }
+        if (context.canceled)
+        {
+            if (HandGrab.main.heldObject == this) HandGrab.main.Release();
+        }
+    }
+
     //FUNCTIONALITY METHODS:
     public override void IsGrabbed(HandGrab controller)
     {
         base.IsGrabbed(controller); //Call base grab method
         foreach (Animator anim in Fingerer.main.anims) anim.SetInteger("GrabType", 1);
         isHolstered = false;        //Indicate that object is no longer holstered
+        GetComponent<Renderer>().enabled = true;
     }
     public override void IsReleased(HandGrab controller)
     {
@@ -80,5 +96,6 @@ public class Holsterable : Grabbable
         transform.parent = holster.parent; //Reparent object to original parent
         isHolstered = true; //Indicate that object is now holstered
         isGrabbable = true; //Indicate that object may now be grabbed
+        GetComponent<Renderer>().enabled = false;
     }
 }

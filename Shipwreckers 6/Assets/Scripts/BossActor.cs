@@ -85,6 +85,8 @@ public class BossActor : MonoBehaviour, IShootable
     [SerializeField]
     private AudioSource tapsMusic; // :(
 
+    public GameObject freddy;
+
     private void Awake()
     {
         pmove = GetComponent<PolarMover>();
@@ -290,5 +292,17 @@ public class BossActor : MonoBehaviour, IShootable
     public void ExplodeMast()
     {
         MastExploder.ExplodeNextMast();
+    }
+
+    //----------------------------------------
+    // --- Freddy Fazbear ---
+    //----------------------------------------
+    public void TheBiteOf87()
+    {
+        Vector3 dir = -BodyOrienter.main.transform.forward;
+        Vector3 pos = Vector3.zero + dir * 40;
+        GameObject boo = Instantiate(freddy, transform.root);
+        boo.transform.position = pos;
+        boo.transform.rotation = BodyOrienter.main.transform.rotation;
     }
 }
