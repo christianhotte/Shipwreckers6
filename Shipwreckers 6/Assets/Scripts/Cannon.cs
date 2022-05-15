@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.OpenXR.Features.Interactions;
 
@@ -22,7 +23,6 @@ public class Cannon : MonoBehaviour
     private Transform loadZone; //Transform representing position loaded cannonballs are placed in
 
     private AudioSource audioSource; //Cannon audio source component
-    //private ActionBasedController xr;
 
     //Settings:
     [Header("Base Weapon Properties:")]
@@ -238,7 +238,7 @@ public class Cannon : MonoBehaviour
             }
 
             //Haptics:
-            //xr.SendHapticImpulse(fireVibration, 0.3f);
+            
         }
 
         //Cleanup:
