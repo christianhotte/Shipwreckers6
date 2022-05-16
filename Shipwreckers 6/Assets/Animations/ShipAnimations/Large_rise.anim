@@ -3549,6 +3549,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 5.8166666
+    functionName: PlayHaHaHa
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 8.8
     functionName: PlayCreak
     data: 
@@ -3558,13 +3565,6 @@ AnimationClip:
     messageOptions: 0
   - time: 11.45
     functionName: PlaySplash
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 12.2
-    functionName: PlayHaHaHa
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
