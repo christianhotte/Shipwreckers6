@@ -12,9 +12,12 @@ public class Holsterable : Grabbable
 
     //Objects & Components:
     [SerializeField] [Tooltip("Location and orientation to snap to when released (generated at start if not given)")] private Transform holster;
+    private AudioSource audioSource; //Audiosource used by this object to make sounds
 
     //Settings:
     [SerializeField] [Tooltip("How quickly object will return to holster once released")] private float snapStrength;
+    [SerializeField] [Tooltip("Sound object makes when it is unholstered")]               private AudioClip drawSound;
+    [SerializeField] [Tooltip("Sound object makes when it is reholstered")]               private AudioClip holsterSound;
 
     //Runtime Memory Vars:
     internal bool isHolstered = true; //Whether or not this object is currently holstered
@@ -26,6 +29,7 @@ public class Holsterable : Grabbable
         base.Awake();          //Call base awake method
         rb.isKinematic = true; //Make sure rigidbody is in kinematic
         isGrabbable = false;
+        audioSource = GetComponent<AudioSource>();
 
         //Check holster status:
         if (holster == null) //No holster has been designated
@@ -84,12 +88,14 @@ public class Holsterable : Grabbable
         foreach (Animator anim in Fingerer.main.anims) anim.SetInteger("GrabType", 1);
         isHolstered = false;        //Indicate that object is no longer holstered
         GetComponent<Renderer>().enabled = true;
+        audioSource.PlayOneShot(drawSound);
     }
     public override void IsReleased(HandGrab controller)
     {
         base.IsReleased(controller); //Call base release method
         rb.isKinematic = true;       //Re-set object to kinematic while traveling to holster
         isGrabbable = false;         //Prevent object from being grabbed while traveling to holster
+        audioSource.PlayOneShot(holsterSound);
     }
     private void IsHolstered()
     {

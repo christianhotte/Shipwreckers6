@@ -77,7 +77,6 @@ public class Cannon : MonoBehaviour
         muzzle = transform.Find("Muzzle"); if (muzzle == null) { Debug.LogError("Cannon needs child named 'Muzzle'"); Destroy(this); }         //Make sure cannon has muzzle
         loadZone = transform.Find("LoadZone"); if (loadZone == null) { Debug.LogError("Cannon needs child named 'LoadZone'"); Destroy(this); } //Make sure cannon has load zone
         if (!TryGetComponent(out audioSource)) { Debug.LogError("Cannon is missing an audio source"); Destroy(this); }                         //Make sure cannon has audio source
-        //xr = transform.parent.GetComponent<ActionBasedController>();
 
         //Initialize runtime vars:
         prevPosition = transform.position;                                         //Get current position of cannon to start off
@@ -238,7 +237,9 @@ public class Cannon : MonoBehaviour
             }
 
             //Haptics:
-            
+            //var channel = 1;
+            //var command = UnityEngine.InputSystem.XR.Haptics.SendHapticImpulseCommand.Create(channel, 100, 0.5f);
+            //device.ExecuteCommand(ref command);
         }
 
         //Cleanup:

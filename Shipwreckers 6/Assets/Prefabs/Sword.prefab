@@ -104,6 +104,8 @@ MonoBehaviour:
   isGrabbable: 1
   holster: {fileID: 0}
   snapStrength: 0.3
+  drawSound: {fileID: 8300000, guid: 67b971dbbd89aee44aa48585f66c35b9, type: 3}
+  holsterSound: {fileID: 8300000, guid: b47ed04cd7b925445a9ca370d11d1786, type: 3}
 --- !u!114 &1223793117487825402
 MonoBehaviour:
   m_ObjectHideFlags: 0
