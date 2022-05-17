@@ -386,6 +386,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4a070c9a5e0595048a426113b47b3b8d, type: 3}
   - {fileID: 8300000, guid: e741f11574e322843b32b06e32597ca6, type: 3}
   - {fileID: 8300000, guid: 3d9edcd3212ac1244b384978d741ae1f, type: 3}
+  grabVibeAmp: 0.2
+  grabVibeDuration: 0.1
 --- !u!82 &7660100870423968378
 AudioSource:
   m_ObjectHideFlags: 0
@@ -579,6 +581,8 @@ MonoBehaviour:
   badMaterial: {fileID: 2100000, guid: 1f34db9fdf6a83a42bca14dda140c3b8, type: 2}
   grabSounds:
   - {fileID: 8300000, guid: e7be91abaf9ce484a874f48f52b89478, type: 3}
+  grabVibeAmp: 1
+  grabVibeDuration: 0.2
 --- !u!82 &3039073484460261116
 AudioSource:
   m_ObjectHideFlags: 0

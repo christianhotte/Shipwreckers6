@@ -53,6 +53,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bdfb1d62e4a3414599177f0a617a6ae, type: 3}
   - {fileID: 8300000, guid: de786976d315f154aa70816355f0aaa6, type: 3}
   - {fileID: 8300000, guid: c4ef8f7ddcfa71f4b92f43636b529cdb, type: 3}
+  grabVibeAmp: 0.4
+  grabVibeDuration: 0.1
 --- !u!82 &641772425523971446
 AudioSource:
   m_ObjectHideFlags: 0

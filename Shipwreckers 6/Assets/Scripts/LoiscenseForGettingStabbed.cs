@@ -6,7 +6,6 @@ public class LoiscenseForGettingStabbed : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)
     {
-        print("oog");
         if (collider.gameObject.layer == 14) PlayerHealthManager.HurtPlayer(1);
     }
 }

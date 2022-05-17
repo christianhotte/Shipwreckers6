@@ -21,6 +21,7 @@ public class Cannon : MonoBehaviour
     private Transform receiver; //Transform for receiver mesh object
     private Transform muzzle;   //Transform representing end of barrel when fully extended (used to spawn shot projectiles and muzzle effects)
     private Transform loadZone; //Transform representing position loaded cannonballs are placed in
+    private Transform needle;   //Transform for needle of gauge showing cannon charge state
 
     private AudioSource audioSource; //Cannon audio source component
 
@@ -36,9 +37,10 @@ public class Cannon : MonoBehaviour
     [SerializeField] [Tooltip("Power multiplier (value) depending on number (t) of fired projectiles, used to make multishots weaker")]                                 private AnimationCurve multishotPowerFalloff;
 
     [Header("Charge Shot Settings:")]
-    [SerializeField] [Tooltip("The longest amount of time player can hold down trigger when charging cannon")] private float maxChargeTime;
-    [SerializeField] [Tooltip("Maximum multiplier applied to shotforce when cannon is charged")]               private float maxShotForceMult;
-    [SerializeField] [Tooltip("Minimum multiplier applied to multishot spread when charging cannon")]          private float minMultiSpreadMult;
+    [SerializeField] [Tooltip("The longest amount of time player can hold down trigger when charging cannon")]              private float maxChargeTime;
+    [SerializeField] [Tooltip("Maximum multiplier applied to shotforce when cannon is charged")]                            private float maxShotForceMult;
+    [SerializeField] [Tooltip("Minimum multiplier applied to multishot spread when charging cannon")]                       private float minMultiSpreadMult;
+    [SerializeField] [Tooltip("Maximum angular intensity of random position effect on needle (increases with charge time")] private float maxNeedleFlicker;
 
     [Header("Visuals & Sequence:")]
     [SerializeField] [Tooltip("Time taken after firing before cannon is ready to fire again")] private float barrelResetTime;
@@ -47,8 +49,8 @@ public class Cannon : MonoBehaviour
     [SerializeField] [Tooltip("Prefab containing temporary effects spawned in when firing")]   private GameObject muzzleEffectPrefab;
 
     [Header("Haptics:")]
-    [SerializeField] private float fireVibration;
-    [SerializeField] private float maxChargeVibration;
+    [SerializeField, Range(0, 1)] private float fireVibration;
+    [SerializeField, Range(0, 1)] private float maxChargeVibration;
 
     [Header("Sounds:")]
     [SerializeField] [Tooltip("Sound made when cannon is loaded")]             private AudioClip loadSound;
@@ -65,18 +67,19 @@ public class Cannon : MonoBehaviour
 
     private List<Vector3> velocityMem = new List<Vector3>(); //List of raw velocity vectors from last few physics updates (in order from latest to oldest)
     private Vector3 prevPosition;                            //Last position hand object was in, used to compute momentary velocity
-
-    private float triggerHoldTime = -1; //Time player has been holding down the trigger (negative means trigger is not held)
+    private float triggerHoldTime = -1;                      //Time player has been holding down the trigger (negative means trigger is not held)
+    private const float maxNeedleAngle = 320;                //Maximum angle gauge needle can reach
 
     //RUNTIME METHODS:
     private void Awake()
     {
         //Get objects & components:
-        barrel = transform.Find("Barrel"); if (barrel == null) { Debug.LogError("Cannon needs child named 'Barrel'"); Destroy(this); }         //Make sure cannon has barrel
-        receiver = transform.Find("Receiver"); if (barrel == null) { Debug.LogError("Cannon needs child named 'Receiver'"); Destroy(this); }   //Make sure cannon has barrel
-        muzzle = transform.Find("Muzzle"); if (muzzle == null) { Debug.LogError("Cannon needs child named 'Muzzle'"); Destroy(this); }         //Make sure cannon has muzzle
-        loadZone = transform.Find("LoadZone"); if (loadZone == null) { Debug.LogError("Cannon needs child named 'LoadZone'"); Destroy(this); } //Make sure cannon has load zone
-        if (!TryGetComponent(out audioSource)) { Debug.LogError("Cannon is missing an audio source"); Destroy(this); }                         //Make sure cannon has audio source
+        barrel = transform.Find("Barrel"); if (barrel == null) { Debug.LogError("Cannon needs child named 'Barrel'"); Destroy(this); }            //Make sure cannon has barrel
+        receiver = transform.Find("Receiver"); if (barrel == null) { Debug.LogError("Cannon needs child named 'Receiver'"); Destroy(this); }      //Make sure cannon has barrel
+        muzzle = transform.Find("Muzzle"); if (muzzle == null) { Debug.LogError("Cannon needs child named 'Muzzle'"); Destroy(this); }            //Make sure cannon has muzzle
+        loadZone = transform.Find("LoadZone"); if (loadZone == null) { Debug.LogError("Cannon needs child named 'LoadZone'"); Destroy(this); }    //Make sure cannon has load zone
+        needle = transform.Find("Gauge").GetChild(0); if (needle == null) { Debug.LogError("Cannon needs child named 'Needle'"); Destroy(this); } //Make sure cannon has needle
+        if (!TryGetComponent(out audioSource)) { Debug.LogError("Cannon is missing an audio source"); Destroy(this); }                            //Make sure cannon has audio source
 
         //Initialize runtime vars:
         prevPosition = transform.position;                                         //Get current position of cannon to start off
@@ -109,6 +112,34 @@ public class Cannon : MonoBehaviour
         prevPosition = transform.position;                                                   //Update prevPosition once used
         velocityMem.Insert(0, currentVelocity);                                              //Insert latest velocity at beginning of memory list
         if (velocityMem.Count > 5) velocityMem.RemoveAt(5);                                  //Remove oldest item in memory if list is overfull
+
+        //Charging Feedback:
+        if (triggerHoldTime >= 0 && loadedAmmo.Count != 0) //Trigger is being held down
+        {
+            float chargeInterpolant = Mathf.Clamp01(triggerHoldTime / maxChargeTime); //Get interpolant value for current charge state
+
+            //Haptics:
+            float hapticIntensity = Mathf.Lerp(0, maxChargeVibration, chargeInterpolant); //Get haptic intensity based on trigger hold time
+            SendHapticImpulse(hapticIntensity, 0.1f);                                     //Send haptic pulse (of arbitrary length) with strength based on current charge intensity
+
+            //Gauge visual:
+            float needleAngle = Mathf.Lerp(0, maxNeedleAngle, chargeInterpolant);                //Get needle angle based on trigger hold time
+            float scaledNeedleFlicker = Mathf.Lerp(0, maxNeedleFlicker, chargeInterpolant);      //Get scaled maximum positional flicker for needle
+            Vector3 newEulers = needle.localEulerAngles;                                         //Get local euler angles of needle object
+            newEulers.z = needleAngle + Random.Range(-scaledNeedleFlicker, scaledNeedleFlicker); //Apply found angle to correct axis and add random noise to final needle position
+            newEulers.z = Mathf.Clamp(newEulers.z, 0, 350);                                      //Clamp final needle angle to ensure it does not overflow
+            needle.localEulerAngles = newEulers;                                                 //Set determined needle angle
+        }
+        else //Trigger is not being held down
+        {
+            if (needle.localEulerAngles.z != 0) //Needle position is not at zero
+            {
+                Vector3 needleEulers = needle.localEulerAngles;       //Get current local eulers of needle object
+                needleEulers.z = Mathf.Lerp(needleEulers.z, 0, 0.2f); //Lerp needle toward zero position
+                if (needleEulers.z <= 0.01f) needleEulers.z = 0;      //Snap to zero position if close enough
+                needle.localEulerAngles = needleEulers;               //Set determined needle angle
+            }
+        }
     }
     public void OnFireInput(InputAction.CallbackContext context)
     {
@@ -148,13 +179,17 @@ public class Cannon : MonoBehaviour
         if (ammo.ammoProfile.isLarge && loadedAmmo.Count > 0) return; //Do not allow large ammo to be loaded into cannon with other ammo
 
         //Handshake:
-        ammo.IsLoaded();      //Indicate to cannonball that it has been loaded (causes hand to release ammunition)
+        ammo.IsLoaded();      //Indicate to ammo item that it has been loaded (causes hand to release ammunition)
         loadedAmmo.Add(ammo); //Store reference to loaded ammunition
 
         //Hide previous ammo (if applicable):
         if (loadedAmmo.Count > 1) //There is at least one ammo item loaded ahead of this one
         {
             loadedAmmo[loadedAmmo.Count - 2].GetComponentInChildren<MeshRenderer>().enabled = false; //Hide previous ammo item in cannon (may need futureproofing)
+        }
+        else //This is the first piece of ammunition being loaded into the cannon
+        {
+
         }
 
         //Place ammo in loaded position:
@@ -172,7 +207,6 @@ public class Cannon : MonoBehaviour
     /// <summary>
     /// Fires all currently-loaded ammo out of cannon, applying given multipliers to shot properties.
     /// </summary>
-    //NOTE: MAKE OVERLOADS
     private void Fire(float forceMultiplier, float spreadMultiplier, bool singleShot)
     {
         //Validity checks:
@@ -237,9 +271,7 @@ public class Cannon : MonoBehaviour
             }
 
             //Haptics:
-            //var channel = 1;
-            //var command = UnityEngine.InputSystem.XR.Haptics.SendHapticImpulseCommand.Create(channel, 100, 0.5f);
-            //device.ExecuteCommand(ref command);
+            SendHapticImpulse(fireVibration, 0.2f); //Send haptic impulse
         }
 
         //Cleanup:
@@ -277,5 +309,22 @@ public class Cannon : MonoBehaviour
         Vector3 totalVelocity = Vector3.zero;                      //Initialize container for storing sum of velocity memory list
         foreach (Vector3 vel in velocityMem) totalVelocity += vel; //Add each velocity in memory to total velocity vector
         return totalVelocity / velocityMem.Count;                  //Return average velocity between all velocities in memory
+    }
+    /// <summary>
+    /// Sends a haptic impulse to the right hand controller.
+    /// </summary>
+    /// <param name="amplitude">Strength of vibration (between 0 and 1).</param>
+    /// <param name="duration">Duration of vibration (in seconds).</param>
+    public void SendHapticImpulse(float amplitude, float duration)
+    {
+        List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();                   //Initialize list to store input devices
+        UnityEngine.XR.InputDevices.GetDevicesWithRole(UnityEngine.XR.InputDeviceRole.RightHanded, devices); //Find all input devices counted as right hand
+        foreach (var device in devices) //Iterate through list of devices identified as right hand
+        {
+            if (device.TryGetHapticCapabilities(out UnityEngine.XR.HapticCapabilities capabilities)) //Device has haptic capabilities
+            {
+                if (capabilities.supportsImpulse) device.SendHapticImpulse(0, amplitude, duration); //Send impulse if supported by device
+            }
+        }
     }
 }

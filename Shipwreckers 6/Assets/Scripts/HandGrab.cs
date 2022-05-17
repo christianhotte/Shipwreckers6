@@ -9,25 +9,22 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class HandGrab : MonoBehaviour
 {
-    //Classes, Enums & Structs:
-
     //Objects & Components:
-    public static HandGrab main;
-    private Transform grabAnchor;  //Transform where grabbed objects stick to
+    public static HandGrab main;    //Singleton instance of this script in scene
+    private Transform grabAnchor;   //Transform where grabbed objects stick to
     internal Grabbable hoverObject; //Grabbable object hand is currently able to grab (if any)
     internal Grabbable heldObject;  //Grabbable object currently being held by hand (if any)
-    //internal Animator anim;         //Animator on child hand model
 
     //Settings:
-    [SerializeField] [Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] [Range(0, 1)] private float grabSnapStrength;
-    [SerializeField] [Tooltip("Determines how many previous velocities to remember for averaging throw velocity")]                 private int velMemoryLength;
+    [SerializeField, Range(0, 1), Tooltip("Determines how quickly an object will orient itself when grabbed (when applicable)")] private float grabSnapStrength;
+    [SerializeField, Tooltip("Determines how many previous velocities to remember for averaging throw velocity")]                private int velMemoryLength;
 
     //Runtime Memory Vars:
     private List<Vector3> velocityMem = new List<Vector3>();   //List of raw velocity vectors from last few physics updates (in order from latest to oldest)
     private List<Vector3> angularVelMem = new List<Vector3>(); //List of raw angular velocity vectors from last few physics updates (in order from latest to oldest)
     private Vector3 prevPosition;                              //Last position hand object was in, used to compute momentary velocity
     private Quaternion prevRotation;                           //Last rotation hand object had, used to compute momentary angular velocity
-    internal bool holdingGrab;
+    internal bool holdingGrab;                                 //Indicates that grab button is currently being held
 
     //RUNTIME METHODS:
     private void Awake()
@@ -180,5 +177,22 @@ public class HandGrab : MonoBehaviour
         Vector3 totalAngVel = Vector3.zero;                        //Initialize container for storing sum of angular velocity memory list
         foreach (Vector3 vel in angularVelMem) totalAngVel += vel; //Add each angular velocity in memory (should already be in radians) to total velocity vector
         return totalAngVel / angularVelMem.Count;                  //Return average angular velocity between all angular velocities in memory
+    }
+    /// <summary>
+    /// Sends a haptic impulse to the left hand controller.
+    /// </summary>
+    /// <param name="amplitude">Strength of vibration (between 0 and 1).</param>
+    /// <param name="duration">Duration of vibration (in seconds).</param>
+    public void SendHapticImpulse(float amplitude, float duration)
+    {
+        List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();                  //Initialize list to store input devices
+        UnityEngine.XR.InputDevices.GetDevicesWithRole(UnityEngine.XR.InputDeviceRole.LeftHanded, devices); //Find all input devices counted as right hand
+        foreach (var device in devices) //Iterate through list of devices identified as right hand
+        {
+            if (device.TryGetHapticCapabilities(out UnityEngine.XR.HapticCapabilities capabilities)) //Device has haptic capabilities
+            {
+                if (capabilities.supportsImpulse) device.SendHapticImpulse(0, amplitude, duration); //Send impulse if supported by device
+            }
+        }
     }
 }
