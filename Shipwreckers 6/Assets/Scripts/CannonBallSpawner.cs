@@ -13,6 +13,7 @@ public class CannonBallSpawner : MonoBehaviour
     [Tooltip("List of sounds to randomly pull from when object is being grabbed by player")] public List<AudioClip> grabSounds = new List<AudioClip>();
     [SerializeField, Range(0, 1), Tooltip("Haptic impulse amplitude for grab effect")]       private float grabVibeAmp;
     [SerializeField, Tooltip("Haptic impulse duration for grab effect (in seconds)")]        private float grabVibeDuration;
+    [SerializeField] private bool requiresActivation = false;
 
     //Runtime Vars:
     internal GameObject currentAmmo;
@@ -32,6 +33,8 @@ public class CannonBallSpawner : MonoBehaviour
     }
     public virtual void OnAmmoGrabbed()
     {
+        if (requiresActivation && !ActivateSipNode.activated) return;
+
         //Release ammo:
         currentAmmo.GetComponent<Grabbable>().OnGrab -= OnAmmoGrabbed; //Unsubscribe from ammo-specific grab event
         currentAmmo.GetComponent<Renderer>().enabled = true;           //Make ammo visible
