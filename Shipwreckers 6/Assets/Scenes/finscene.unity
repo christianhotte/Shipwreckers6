@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1937862265}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.72211206, b: 0.8180093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18412782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7173569148789038101, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+  m_PrefabInstance: {fileID: 77462614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &18412783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18412782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f935296d496b749ada6be9935570b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &21571920
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +334,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[39].m_ActionId
+      value: 51c8a1cd-8285-494f-8f09-465d5cb1cf76
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[39].m_ActionName
+      value: XRI Head/ExitGame[/Keyboard/q]
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 18412783}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitTheGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameExitThing, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 547612480577011177, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4931119752767721364, guid: 272b089fce81d1d4ebd52724c2781ae9, type: 3}
       propertyPath: requiresActivation
       value: 1
