@@ -51,6 +51,7 @@ public class Cannon : MonoBehaviour
     [Header("Haptics:")]
     [SerializeField, Range(0, 1)] private float fireVibration;
     [SerializeField, Range(0, 1)] private float maxChargeVibration;
+    [SerializeField, Range(0, 1)] private float loadVibration;
 
     [Header("Sounds:")]
     [SerializeField] [Tooltip("Sound made when cannon is loaded")]             private AudioClip loadSound;
@@ -189,7 +190,7 @@ public class Cannon : MonoBehaviour
         }
         else //This is the first piece of ammunition being loaded into the cannon
         {
-
+            if (triggerHoldTime > 0) triggerHoldTime = 0; //Reset trigger hold time if cannon has been getting charged while empty
         }
 
         //Place ammo in loaded position:
@@ -203,6 +204,7 @@ public class Cannon : MonoBehaviour
 
         //Effects:
         audioSource.PlayOneShot(loadSound); //Play load sound
+        SendHapticImpulse(loadVibration, 0.1f);
     }
     /// <summary>
     /// Fires all currently-loaded ammo out of cannon, applying given multipliers to shot properties.
