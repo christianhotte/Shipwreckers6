@@ -388,6 +388,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3d9edcd3212ac1244b384978d741ae1f, type: 3}
   grabVibeAmp: 0.2
   grabVibeDuration: 0.1
+  requiresActivation: 0
 --- !u!82 &7660100870423968378
 AudioSource:
   m_ObjectHideFlags: 0
@@ -583,6 +584,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e7be91abaf9ce484a874f48f52b89478, type: 3}
   grabVibeAmp: 1
   grabVibeDuration: 0.2
+  requiresActivation: 0
 --- !u!82 &3039073484460261116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1362,6 +1364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7173569148588318500}
+  - component: {fileID: 3581201605658452206}
   m_Layer: 0
   m_Name: Camera Offset
   m_TagString: Untagged
@@ -1386,6 +1389,18 @@ Transform:
   m_Father: {fileID: 7173569148212483910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3581201605658452206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173569148588318503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd9b39022200dd45b2e6d1a477866f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7173569148789038101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1660,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 098e2623-d398-44e2-ba81-73dda9d004db
     m_ActionName: XRI LeftHand Interaction/Sword
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3581201605658452206}
+        m_TargetAssemblyTypeName: ReCenterer, Assembly-CSharp
+        m_MethodName: OnReCenterInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d303e749-abf7-4abd-9470-687f36dd9a63
+    m_ActionName: XRI LeftHand Interaction/ReCenter
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: XRI Head
