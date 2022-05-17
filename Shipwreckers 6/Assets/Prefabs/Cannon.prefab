@@ -137,7 +137,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   maxChargeTime: 2.5
   maxShotForceMult: 3
-  minMultiSpreadMult: 0.4
+  minMultiSpreadMult: 0.5
   maxNeedleFlicker: 15
   barrelResetTime: 0.55
   barrelReciproDist: 0.23
@@ -177,6 +177,7 @@ MonoBehaviour:
   muzzleEffectPrefab: {fileID: 0}
   fireVibration: 1
   maxChargeVibration: 0.5
+  loadVibration: 0.2
   loadSound: {fileID: 8300000, guid: 30d22e6426b26f64c9877d0e02413342, type: 3}
   fireSound: {fileID: 8300000, guid: 0cf17713cc930a848a23c2089ff3a467, type: 3}
   dryFireSound: {fileID: 8300000, guid: 634ec33c1c78074408869b3ec41964ab, type: 3}
